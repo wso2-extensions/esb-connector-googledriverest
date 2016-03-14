@@ -1,0 +1,8 @@
+{
+  "apiUrl": "%s(apiUrl)",
+  "accessToken": "%s(accessToken)",
+  "fileId": "%s(fileId)",
+  "propertyKey": "%s(propertyKey)",
+  "key": "%s(propertyKey)",
+  "value": "in"
+}

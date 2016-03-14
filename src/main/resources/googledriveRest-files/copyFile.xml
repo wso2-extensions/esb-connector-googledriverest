@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~  WSO2 Inc. licenses this file to you under the Apache License,
+ ~  Version 2.0 (the "License"); you may not use this file except
+ ~  in compliance with the License.
+ ~  You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~  Unless required by applicable law or agreed to in writing,
+ ~  software distributed under the License is distributed on an
+ ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~  KIND, either express or implied.  See the License for the
+ ~  specific language governing permissions and limitations
+ ~  under the License.
+-->
+<template name="copyFile" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="apiUrl" description="API Url to access the endpoint"/>
+    <parameter name="fileId" description="The ID of the file to copy"/>
+    <parameter name="convert" description="Whether to convert this file to the corresponding Google Docs format"/>
+    <parameter name="ocr" description="Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads"/>
+    <parameter name="ocrLanguage" description="The language to use"/>
+    <parameter name="pinned" description="Whether to pin the head revision"/>
+    <parameter name="timedTextLanguage" description="The language of the timed text"/>
+    <parameter name="timedTextTrackName" description="The timed text track name"/>
+    <parameter name="visibility" description="The visibility of the new file"/>
+    <parameter name="fields" description="The needed fields in the response"/>
+    <parameter name="bodyReq" description="request sent in body payload"/>
+
+    <sequence>
+        <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
+        <property name="uri.var.fileId" expression="$func:fileId"/>
+        <property name="uri.var.convert" expression="$func:convert"/>
+        <property name="uri.var.ocr" expression="$func:ocr"/>
+        <property name="uri.var.ocrLanguage" expression="$func:ocrLanguage"/>
+        <property name="uri.var.pinned" expression="$func:pinned"/>
+        <property name="uri.var.timedTextLanguage" expression="$func:timedTextLanguage"/>
+        <property name="uri.var.bodyReq" expression="$func:bodyReq"/>
+        <property name="uri.var.timedTextTrackName" expression="$func:timedTextTrackName"/>
+        <property name="uri.var.visibility" expression="$func:visibility"/>
+        <property name="uri.var.fields" expression="$func:fields"/>
+
+        <payloadFactory media-type="json">
+            <format>
+                $1
+            </format>
+            <args>
+                <arg expression="$ctx:uri.var.bodyReq'"/>
+            </args>
+        </payloadFactory>
+
+        <property name="uri.var.apiParameters" value=""/>
+
+        <filter xpath="(not(get-property('uri.var.convert') = '' or (not(string(get-property('uri.var.convert'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'),'convert=',get-property('uri.var.convert'))"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not(get-property('uri.var.ocr') = '' or (not(string(get-property('uri.var.ocr'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'),'ocr=',get-property('uri.var.ocr'))"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not(get-property('uri.var.ocrLanguage') = '' or (not(string(get-property('uri.var.ocrLanguage'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'),'ocrLanguage=',get-property('uri.var.ocrLanguage'))"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not(get-property('uri.var.fields') = '' or (not(string(get-property('uri.var.fields'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'),'fields=',get-property('uri.var.fields'))"/>
+            </then>
+        </filter>
+
+
+        <filter xpath="(not(get-property('uri.var.pinned') = '' or (not(string(get-property('uri.var.pinned'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'),'pinned=',get-property('uri.var.pinned'))"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not(get-property('uri.var.timedTextLanguage') = '' or (not(string(get-property('uri.var.timedTextLanguage'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'),'timedTextLanguage=',get-property('uri.var.timedTextLanguage'))"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not(get-property('uri.var.timedTextTrackName') = '' or (not(string(get-property('uri.var.timedTextTrackName'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'),'timedTextTrackName=',get-property('uri.var.timedTextTrackName'))"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not(get-property('uri.var.visibility') = '' or (not(string(get-property('uri.var.visibility'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'),'visibility=',get-property('uri.var.visibility'))"/>
+            </then>
+        </filter>
+
+
+        <call>
+            <endpoint>
+                <http method="POST"
+                      uri-template="{uri.var.apiUrl}/drive/v2/files/{+uri.var.fileId}/copy?{+uri.var.apiParameters}"/>
+            </endpoint>
+        </call>
+
+    </sequence>
+</template>

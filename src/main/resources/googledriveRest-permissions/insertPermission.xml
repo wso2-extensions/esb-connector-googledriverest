@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~  WSO2 Inc. licenses this file to you under the Apache License,
+ ~  Version 2.0 (the "License"); you may not use this file except
+ ~  in compliance with the License.
+ ~  You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~  Unless required by applicable law or agreed to in writing,
+ ~  software distributed under the License is distributed on an
+ ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~  KIND, either express or implied.  See the License for the
+ ~  specific language governing permissions and limitations
+ ~  under the License.
+-->
+<template name="insertPermission" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="apiUrl" description="API Url to access the endpoint"/>
+    <parameter name="fileId" description="The ID for the file"/>
+    <parameter name="role" description="The primary role for this user"/>
+    <parameter name="type" description="The account type"/>
+    <parameter name="fields" description="The needed fields in the response"/>
+    <parameter name="emailMessage" description="A custom message to include in notification emails"/>
+    <parameter name="sendNotificationEmails" description="Whether to send notification emails"/>
+    <parameter name="additionalRoles" description="Additional roles for this user"/>
+    <parameter name="id" description="The ID of the user this permission refers to"/>
+    <parameter name="value" description="The email address or domain name for the entity"/>
+    <parameter name="withLink" description="Whether the link is required for this permission"/>
+    <sequence>
+        <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
+        <property name="uri.var.fileId" expression="$func:fileId"/>
+        <property name="uri.var.role" expression="$func:role"/>
+        <property name="uri.var.type" expression="$func:type"/>
+        <property name="uri.var.emailMessage" expression="$func:emailMessage"/>
+        <property name="uri.var.sendNotificationEmails" expression="$func:sendNotificationEmails"/>
+        <property name="uri.var.fields" expression="$func:fields"/>
+        <property name="uri.var.additionalRoles" expression="$func:additionalRoles"/>
+        <property name="uri.var.id" expression="$func:id"/>
+        <property name="uri.var.value" expression="$func:value"/>
+        <property name="uri.var.withLink" expression="$func:withLink"/>
+        <property name="uri.var.apiParameters" value=""/>
+        <payloadFactory media-type="json">
+            <format>
+                {
+                "role":"$1",
+                "type":"$2"
+                }
+            </format>
+            <args>
+                <arg expression="$ctx:uri.var.role'"/>
+                <arg expression="$ctx:uri.var.type'"/>
+            </args>
+        </payloadFactory>
+        <script language="js">
+            <![CDATA[
+                //request body param variables
+                var additionalRoles = mc.getProperty('uri.var.additionalRoles');
+                var id = mc.getProperty('uri.var.id');
+                var value = mc.getProperty('uri.var.value');
+                var withLink= mc.getProperty('uri.var.withLink');
+
+                //Get the existing payload
+                var payload = mc.getPayloadJSON();
+
+                if (additionalRoles != null && additionalRoles != "") {
+                    payload["additionalRoles"] = additionalRoles;
+                }
+                if (withLink != null && withLink != "") {
+                    payload["withLink"] = withLink;
+                }
+                if (id != null && id != "") {
+                   payload["id"] = id;
+                }
+                if (value != null && value != "") {
+                   payload["value"] = value;
+                }
+
+                //Set the newly constructed payload
+                mc.setPayloadJSON(payload);
+			]]>
+        </script>
+        <filter xpath="(not($ctx:uri.var.fields= '' or (not(string($ctx:uri.var.fields)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'fields=',$ctx:uri.var.fields)"/>
+            </then>
+        </filter>
+        <filter xpath="(not($ctx:uri.var.emailMessage= '' or (not(string($ctx:uri.var.emailMessage)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'emailMessage=',$ctx:uri.var.emailMessage)"/>
+            </then>
+        </filter>
+        <filter xpath="(not($ctx:uri.var.sendNotificationEmails= '' or (not(string($ctx:uri.var.sendNotificationEmails)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'sendNotificationEmails=',$ctx:uri.var.sendNotificationEmails)"/>
+            </then>
+        </filter>
+        <call>
+            <endpoint>
+                <http method="Post"
+                      uri-template="{uri.var.apiUrl}/drive/v2/files/{+uri.var.fileId}/permissions?{+uri.var.apiParameters}"/>
+            </endpoint>
+        </call>
+    </sequence>
+</template>

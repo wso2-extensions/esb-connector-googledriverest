@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~  WSO2 Inc. licenses this file to you under the Apache License,
+ ~  Version 2.0 (the "License"); you may not use this file except
+ ~  in compliance with the License.
+ ~  You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~  Unless required by applicable law or agreed to in writing,
+ ~  software distributed under the License is distributed on an
+ ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~  KIND, either express or implied.  See the License for the
+ ~  specific language governing permissions and limitations
+ ~  under the License.
+-->
+<template name="updateInsertFile" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="apiUrl" description="API Url to access the endpoint"/>
+    <parameter name="uploadType" description="The name of a resource type"/>
+    <parameter name="idToUpdate" description="The name of a resource type"/>
+    <parameter name="addParents" description=" "/>
+    <parameter name="convert" description=" "/>
+    <parameter name="modifiedDateBehavior" description=" "/>
+    <parameter name="newRevision" description=" "/>
+    <parameter name="ocr" description=" "/>
+    <parameter name="ocrLanguage" description=" "/>
+    <parameter name="pinned" description=" "/>
+    <parameter name="removeParents" description=" "/>
+    <parameter name="setModifiedDate" description=" "/>
+    <parameter name="bodyReq" description=" "/>
+    <parameter name="timedTextLanguage" description=" "/>
+    <parameter name="timedTextTrackName" description=" "/>
+    <parameter name="updateViewedDate" description=" "/>
+    <parameter name="useContentAsIndexableText" description=" "/>
+
+    <sequence>
+        <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
+        <property name="uri.var.uploadType" expression="$func:uploadType"/>
+        <property name="uri.var.idToUpdate" expression="$func:idToUpdate"/>
+        <property name="uri.var.addParents" expression="$func:addParents"/>
+        <property name="uri.var.convert" expression="$func:convert"/>
+        <property name="uri.var.modifiedDateBehavior" expression="$func:modifiedDateBehavior"/>
+        <property name="uri.var.newRevision" expression="$func:newRevision"/>
+        <property name="uri.var.ocr" expression="$func:ocr"/>
+        <property name="uri.var.ocrLanguage" expression="$func:ocrLanguage"/>
+        <property name="uri.var.pinned" expression="$func:pinned"/>
+        <property name="uri.var.removeParents" expression="$func:removeParents"/>
+        <property name="uri.var.setModifiedDate" expression="$func:setModifiedDate"/>
+        <property name="uri.var.bodyReq" expression="$func:bodyReq"/>
+        <property name="uri.var.timedTextLanguage" expression="$func:timedTextLanguage"/>
+        <property name="uri.var.timedTextTrackName" expression="$func:timedTextTrackName"/>
+        <property name="uri.var.updateViewedDate" expression="$func:updateViewedDate"/>
+        <property name="uri.var.useContentAsIndexableText" expression="$func:useContentAsIndexableText"/>
+        <property name="uri.var.apiParameters" value=""/>
+
+        <payloadFactory media-type="json">
+            <format>
+                $1
+            </format>
+            <args>
+                <arg expression="$ctx:uri.var.bodyReq'"/>
+            </args>
+        </payloadFactory>
+
+        <filter xpath="(not($ctx:uri.var.addParents= '' or (not(string($ctx:uri.var.addParents)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'addParents=',$ctx:uri.var.addParents)"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not($ctx:uri.var.modifiedDateBehavior= '' or (not(string($ctx:uri.var.modifiedDateBehavior)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'modifiedDateBehavior=',$ctx:uri.var.modifiedDateBehavior)"/>
+            </then>
+        </filter>
+        <filter xpath="(not($ctx:uri.var.newRevision= '' or (not(string($ctx:uri.var.newRevision)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'newRevision=',$ctx:uri.var.newRevision)"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not($ctx:uri.var.ocr= '' or (not(string($ctx:uri.var.ocr)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'ocr=',$ctx:uri.var.ocr)"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not($ctx:uri.var.convert= '' or (not(string($ctx:uri.var.convert)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'convert=',$ctx:uri.var.convert)"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not($ctx:uri.var.ocrLanguage= '' or (not(string($ctx:uri.var.ocrLanguage)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'ocrLanguage=',$ctx:uri.var.ocrLanguage)"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not($ctx:uri.var.pinned= '' or (not(string($ctx:uri.var.pinned)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'pinned=',$ctx:uri.var.pinned)"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not($ctx:uri.var.removeParents= '' or (not(string($ctx:uri.var.removeParents)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'removeParents=',$ctx:uri.var.removeParents)"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not($ctx:uri.var.timedTextLanguage= '' or (not(string($ctx:uri.var.timedTextLanguage)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'timedTextLanguage=',$ctx:uri.var.timedTextLanguage)"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not($ctx:uri.var.setModifiedDate= '' or (not(string($ctx:uri.var.setModifiedDate)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'setModifiedDate=',$ctx:uri.var.setModifiedDate)"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not($ctx:uri.var.timedTextLanguage= '' or (not(string($ctx:uri.var.timedTextLanguage)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'timedTextLanguage=',$ctx:uri.var.timedTextLanguage)"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not($ctx:uri.var.timedTextTrackName= '' or (not(string($ctx:uri.var.timedTextTrackName)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'timedTextTrackName=',$ctx:uri.var.timedTextTrackName)"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not($ctx:uri.var.updateViewedDate= '' or (not(string($ctx:uri.var.updateViewedDate)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'updateViewedDate=',$ctx:uri.var.updateViewedDate)"/>
+            </then>
+        </filter>
+
+        <filter xpath="(not($ctx:uri.var.useContentAsIndexableText= '' or (not(string($ctx:uri.var.useContentAsIndexableText)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'useContentAsIndexableText=',$ctx:uri.var.useContentAsIndexableText)"/>
+            </then>
+        </filter>
+
+        <call>
+            <endpoint>
+                <http method="PUT"
+                      uri-template="{uri.var.apiUrl}/drive/v2/files/{+uri.var.idToUpdate}?{+uri.var.apiParameters}"/>
+            </endpoint>
+        </call>
+
+    </sequence>
+</template>

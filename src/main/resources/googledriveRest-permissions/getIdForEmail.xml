@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~  WSO2 Inc. licenses this file to you under the Apache License,
+ ~  Version 2.0 (the "License"); you may not use this file except
+ ~  in compliance with the License.
+ ~  You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~  Unless required by applicable law or agreed to in writing,
+ ~  software distributed under the License is distributed on an
+ ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~  KIND, either express or implied.  See the License for the
+ ~  specific language governing permissions and limitations
+ ~  under the License.
+-->
+<template name="getIdForEmail" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="apiUrl" description="API Url to access the endpoint"/>
+    <parameter name="email" description="The email address for which to return a permission ID"/>
+    <sequence>
+        <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
+        <property name="uri.var.email" expression="$func:email"/>
+        <property name="uri.var.apiParameters" value=""/>
+        <filter xpath="(not($ctx:uri.var.fields= '' or (not(string($ctx:uri.var.fields)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters,'fields=',$ctx:uri.var.fields)"/>
+            </then>
+        </filter>
+        <call>
+            <endpoint>
+                <http method="Get"
+                      uri-template="{uri.var.apiUrl}/drive/v2/permissionIds/{+uri.var.email}?{+uri.var.apiParameters}"/>
+            </endpoint>
+        </call>
+    </sequence>
+</template>
