@@ -1195,8 +1195,8 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
     public void testuploadFileWithMandatoryParameters() throws IOException, JSONException {
 
         headersMap.put("Authorization", "Bearer " + accessToken);
-        String esbEndpPoint = multipartProxyUrl;
-        MultipartFormdataProcessor multipartProcessor = new MultipartFormdataProcessor(esbEndpPoint, headersMap);
+        String esbEndPoint = multipartProxyUrl;
+        MultipartFormdataProcessor multipartProcessor = new MultipartFormdataProcessor(esbEndPoint, headersMap);
         multipartProcessor.addFileToRequest("a", connectorProperties.getProperty("uploadFileName"), null, connectorProperties.getProperty("targetFileName"));
         RestResponse<JSONObject> esbRestResponse = multipartProcessor.processForJsonResponse();
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);

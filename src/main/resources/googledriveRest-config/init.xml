@@ -33,9 +33,9 @@
         <property name="uri.var.refreshToken" expression="$func:refreshToken"/>
         <property name="uri.var.clientId" expression="$func:clientId"/>
         <property name="uri.var.clientSecret" expression="$func:clientSecret"/>
-        <property name="uri.var.accessTokenRegistryPath"
-                  expression="$func:accessTokenRegistryPath"/>
+        <property name="uri.var.accessTokenRegistryPath" expression="$func:accessTokenRegistryPath"/>
         <property name="uri.var.appVersionId" value=""/>
+
         <filter xpath="boolean($ctx:uri.var.apiVersion)" regex="true">>
             <then>
                 <property name="uri.var.appVersionId"
