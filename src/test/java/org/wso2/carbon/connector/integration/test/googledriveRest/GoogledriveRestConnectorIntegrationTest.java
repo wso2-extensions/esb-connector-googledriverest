@@ -25,7 +25,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.connector.integration.test.base.ConnectorIntegrationTestBase;
 import org.wso2.connector.integration.test.base.RestResponse;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,10 +32,8 @@ import java.util.Map;
 public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegrationTestBase {
 
     private Map<String, String> esbRequestHeadersMap;
-
     private Map<String, String> apiRequestHeadersMap;
     private Map<String, String> headersMap = new HashMap<String, String>();
-
     private String apiEndpointUrl;
     private String apiEndpoint;
     private String multipartProxyUrl;
@@ -55,8 +52,9 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Content-Type", "application/json");
         esbRequestHeadersMap.put("Accept", "application/json");
 
-        apiEndpoint = "https://www.googleapis.com/oauth2/v3/token?grant_type=refresh_token&client_id=" + connectorProperties.getProperty("clientId") +
-                "&client_secret=" + connectorProperties.getProperty("clientSecret") + "&refresh_token=" + connectorProperties.getProperty("refreshToken");
+        apiEndpoint = "https://www.googleapis.com/oauth2/v3/token?grant_type=refresh_token&client_id="+
+                connectorProperties.getProperty("clientId")+"&client_secret="+connectorProperties.getProperty("clientSecret")
+                +"&refresh_token=" + connectorProperties.getProperty("refreshToken");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "POST", apiRequestHeadersMap);
         accessToken = apiRestResponse.getBody().getString("access_token");
         connectorProperties.put("accessToken", accessToken);
@@ -76,7 +74,7 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
      * @throws JSONException
      * @throws IOException
      */
-    @Test(groups = {"wso2.esb"}, enabled = true, description = "googleanalytics {listFile} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"}, enabled = true, description ="googleanalytics {listFile} integration test with mandatory parameters.")
     public void testListFileWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:listFile");
@@ -84,12 +82,9 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_listFile_mandatory.json");
 
         final JSONObject esbResponse = esbRestResponse.getBody();
-
         final String apiEndpoint = apiEndpointUrl + "/files";
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
-
         final JSONObject apiResponse = apiRestResponse.getBody();
-
         Assert.assertEquals(esbResponse.getString("kind"), "drive#fileList");
 
     }
@@ -100,7 +95,7 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
      * @throws JSONException
      * @throws IOException
      */
-    @Test(groups = {"wso2.esb"}, description = "googleanalytics {listFile} integration test with optional parameters.")
+    @Test(groups = {"wso2.esb"}, description ="googleanalytics {listFile} integration test with optional parameters.")
     public void testListFileWithOptionalParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:listFile");
@@ -108,12 +103,9 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_listFile_optional.json");
 
         final JSONObject esbResponse = esbRestResponse.getBody();
-
         final String apiEndpoint = apiEndpointUrl + "/files";
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
-
         final JSONObject apiResponse = apiRestResponse.getBody();
-
         Assert.assertEquals(esbResponse.getString("kind"), "drive#fileList");
         String fileId = esbResponse.getJSONArray("items").getJSONObject(0).getString("id");
         connectorProperties.put("fileId", fileId);
@@ -132,14 +124,10 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:getFile");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getFile_mandatory.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
-
         final String apiEndpoint = apiEndpointUrl + "/files/" + connectorProperties.getProperty("fileId");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
-
         final JSONObject apiResponse = apiRestResponse.getBody();
-
         Assert.assertEquals(esbResponse.getString("kind"), "drive#file");
     }
 
@@ -156,14 +144,10 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:copyFile");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_copyFile_mandatory.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
-
         final String apiEndpoint = apiEndpointUrl + "/files/" + connectorProperties.getProperty("fileId") + "/copy";
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
-
         final JSONObject apiResponse = apiRestResponse.getBody();
-
         Assert.assertEquals(esbResponse.getString("kind"), "drive#file");
     }
 
@@ -179,15 +163,11 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:getAbout");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getInfo_mandatory.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
-
         final String apiEndpoint = apiEndpointUrl + "/about";
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
-
         final JSONObject apiResponse = apiRestResponse.getBody();
         Assert.assertEquals(esbResponse.getString("kind").toString(), apiResponse.getString("kind").toString());
-
     }
 
     /**
@@ -202,15 +182,11 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:getAbout");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getInfo_optional.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
-
         final String apiEndpoint = apiEndpointUrl + "/about?fields=kind,name";
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
-
         final JSONObject apiResponse = apiRestResponse.getBody();
         Assert.assertEquals(esbResponse.getString("name").toString(), apiResponse.getString("name").toString());
-
     }
 
     /**
@@ -225,12 +201,9 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:listChanges");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_listChanges_mandatory.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
-
         final String apiEndpoint = apiEndpointUrl + "/changes";
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
-
         final JSONObject apiResponse = apiRestResponse.getBody();
         Assert.assertEquals(esbResponse.getString("kind").toString(), "drive#changeList");
         String changeId = esbResponse.getJSONArray("items").getJSONObject(0).getString("id");
@@ -251,14 +224,11 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:getChanges");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getChanges_mandatory.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
-
         final String apiEndpoint = apiEndpointUrl + "/changes/" + connectorProperties.getProperty("changeId");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
         final JSONObject apiResponse = apiRestResponse.getBody();
         Assert.assertEquals(esbResponse.getString("kind").toString(), "drive#change");
-
     }
 
     /**
@@ -297,14 +267,11 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:getChild");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getChild_mandatory.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
-
         final String apiEndpoint = apiEndpointUrl +"/files/root/children/" + connectorProperties.getProperty("childId");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
         final JSONObject apiResponse = apiRestResponse.getBody();
         Assert.assertEquals(esbResponse.getString("kind").toString(), "drive#childReference");
-
     }
 
     /**
@@ -319,9 +286,7 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:getChild");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getChild_negative.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
-
         final String apiEndpoint = apiEndpointUrl + "/files/root/children/invalid";
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
         final JSONObject apiResponse = apiRestResponse.getBody();
@@ -329,7 +294,6 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         Assert.assertEquals(esbRestResponse.getBody().getJSONObject("error").getJSONArray("errors").getJSONObject(0)
                 .getString("message"), apiRestResponse.getBody().getJSONObject("error").getJSONArray("errors")
                 .getJSONObject(0).getString("message"));
-
     }
 
     /**
@@ -344,12 +308,9 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:insertChild");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_insertChild_mandatory.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbResponse.getString("kind").toString(), "drive#childReference");
-
     }
 
     /**
@@ -365,12 +326,9 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:deleteChild");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteChild_mandatory.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbResponse.getString("kind").toString(), "drive#childReference");
-
     }
 
     /**
@@ -385,10 +343,8 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:deleteChild");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteChild_negative.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
-
     }
 
     /**
@@ -403,16 +359,13 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:listComments");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_listComments_mandatory.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
-
         final String apiEndpoint = apiEndpointUrl + "/files/" + connectorProperties.getProperty("fileId") + "/comments";
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
         final JSONObject apiResponse = apiRestResponse.getBody();
         Assert.assertEquals(esbResponse.getString("kind").toString(), "drive#commentList");
         String commentId = esbResponse.getJSONArray("items").getJSONObject(0).getString("commentId").toString();
         connectorProperties.put("commentId", commentId);
-
     }
 
     /**
@@ -428,14 +381,12 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:getComments");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getComments_mandatory.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
-
-        final String apiEndpoint = apiEndpointUrl + "/files/" + connectorProperties.getProperty("fileId") + "/comments/" + connectorProperties.getProperty("commentId");
+        final String apiEndpoint =apiEndpointUrl+"/files/"+connectorProperties.getProperty("fileId")+"/comments/"+
+                connectorProperties.getProperty("commentId");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
         final JSONObject apiResponse = apiRestResponse.getBody();
         Assert.assertEquals(esbResponse.getString("kind").toString(), "drive#commentList");
-
     }
 
     /**
@@ -450,15 +401,12 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:createComment");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createComments_mandatory.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
-
-        final String apiEndpoint = apiEndpointUrl + "/files/" + connectorProperties.getProperty("fileId") + "/comments";
+        final String apiEndpoint =apiEndpointUrl+"/files/"+connectorProperties.getProperty("fileId")+"/comments";
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(esbResponse.getString("kind").toString(), "drive#comment");
         String commentIdCreated = esbResponse.getString("commentId").toString();
         connectorProperties.put("commentIdCreated", commentIdCreated);
-
     }
 
     /**
@@ -473,9 +421,7 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:updateComment");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateComment_mandatory.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
-
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(esbResponse.getString("kind").toString(), "drive#commentList");
     }
@@ -493,11 +439,9 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         esbRequestHeadersMap.put("Action", "urn:deleteComment");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteComment_mandatory.json");
-
         final JSONObject esbResponse = esbRestResponse.getBody();
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(esbResponse.getString("kind").toString(), "drive#commentList");
-
     }
 
     /**
