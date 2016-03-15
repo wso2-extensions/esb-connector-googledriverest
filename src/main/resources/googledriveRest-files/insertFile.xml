@@ -18,8 +18,8 @@
 -->
 <template name="insertFile" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="apiUrl" description="API Url to access the endpoint"/>
-    <parameter name="uploadType" description="The resource type -media"/>
-    <parameter name="ocr" description="Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads"/>
+    <parameter name="uploadType" description="The resource type media"/>
+    <parameter name="ocr" description="Whether to attempt OCR on jpg,.png,gif,pdf uploads"/>
     <parameter name="convert" description="Whether to convert this file to the corresponding Google Docs format"/>
     <parameter name="ocrLanguage" description="The ocr lanuage to use"/>
     <parameter name="pinned" description="Whether to pin the head revision of the uploaded file"/>

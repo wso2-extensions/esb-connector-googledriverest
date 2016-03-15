@@ -18,28 +18,26 @@
 -->
 <template name="updateInsertFile" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="apiUrl" description="API Url to access the endpoint"/>
-    <parameter name="uploadType" description="The name of a resource type"/>
-    <parameter name="idToUpdate" description="The name of a resource type"/>
-    <parameter name="addParents" description=" "/>
-    <parameter name="convert" description=" "/>
-    <parameter name="modifiedDateBehavior" description=" "/>
-    <parameter name="newRevision" description=" "/>
-    <parameter name="ocr" description=" "/>
-    <parameter name="ocrLanguage" description=" "/>
-    <parameter name="pinned" description=" "/>
-    <parameter name="removeParents" description=" "/>
-    <parameter name="setModifiedDate" description=" "/>
-    <parameter name="bodyReq" description=" "/>
-    <parameter name="timedTextLanguage" description=" "/>
-    <parameter name="timedTextTrackName" description=" "/>
-    <parameter name="updateViewedDate" description=" "/>
-    <parameter name="useContentAsIndexableText" description=" "/>
+    <parameter name="uploadType" description="The resource type -media"/>
+    <parameter name="idToUpdate" description="The id of the file"/>
+    <parameter name="addParents" description="Comma-separated list of parent IDs to add"/>
+    <parameter name="modifiedDateBehavior" description="Determines the behavior in which modifiedDate is update"/>
+    <parameter name="newRevision" description="Whether a blob upload should create a new revision"/>
+    <parameter name="ocr" description="Whether to attempt OCR on jpg,.png,gif,pdf uploads"/>
+    <parameter name="ocrLanguage" description="The ocr lanuage to use"/>
+    <parameter name="pinned" description="Whether to pin the new revision"/>
+    <parameter name="removeParents" description="Comma-separated list of parent IDs to remove"/>
+    <parameter name="setModifiedDate" description="Whether to set the modified date"/>
+    <parameter name="bodyReq" description="request body"/>
+    <parameter name="timedTextLanguage" description="The language of the timed text"/>
+    <parameter name="timedTextTrackName" description="The timed text track name"/>
+    <parameter name="updateViewedDate" description="Whether to update the view date"/>
+    <parameter name="useContentAsIndexableText" description="Whether to use the content as indexable text"/>
     <sequence>
         <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
         <property name="uri.var.uploadType" expression="$func:uploadType"/>
         <property name="uri.var.idToUpdate" expression="$func:idToUpdate"/>
         <property name="uri.var.addParents" expression="$func:addParents"/>
-        <property name="uri.var.convert" expression="$func:convert"/>
         <property name="uri.var.modifiedDateBehavior" expression="$func:modifiedDateBehavior"/>
         <property name="uri.var.newRevision" expression="$func:newRevision"/>
         <property name="uri.var.ocr" expression="$func:ocr"/>
@@ -84,12 +82,6 @@
             <then>
                 <property name="uri.var.apiParameters"
                     expression="fn:concat($ctx:uri.var.apiParameters,'ocr=',$ctx:uri.var.ocr)"/>
-            </then>
-        </filter>
-        <filter xpath="(not($ctx:uri.var.convert= '' or (not(string($ctx:uri.var.convert)))))">
-            <then>
-                <property name="uri.var.apiParameters"
-                    expression="fn:concat($ctx:uri.var.apiParameters,'convert=',$ctx:uri.var.convert)"/>
             </then>
         </filter>
         <filter xpath="(not($ctx:uri.var.ocrLanguage= '' or (not(string($ctx:uri.var.ocrLanguage)))))">

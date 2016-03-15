@@ -24,6 +24,7 @@
         <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
         <property name="uri.var.authorizationCode" expression="$func:authorizationCode"/>
         <property name="uri.var.redirectUrl" expression="$func:redirectUrl"/>
+
         <!-- If the user sends the apiUrl it will be used, else it'll be fetched from the registry. -->
         <filter source="boolean(get-property('uri.var.apiUrl'))" regex="false">
             <then>
@@ -78,10 +79,10 @@
                 var existingAccessToken = mc.getConfiguration().getRegistry().getResource("connectors/GoogleAnalytics/accessToken");
                 if(existingAccessToken == null){
                   // Create the registry entry if no such entry exists.
-                  mc.getConfiguration().getRegistry().newResource("connectors/GoogleAnalytics/accessToken", newAccessToken);
+                  mc.getConfiguration().getRegistry().newResource("connectors/GoogleAnalytics/accessToken",newAccessToken);
                 } else {
                   // Update the registry entry if it already exists.
-                  mc.getConfiguration().getRegistry().updateResource("connectors/GoogleAnalytics/accessToken", newAccessToken);
+                  mc.getConfiguration().getRegistry().updateResource("connectors/GoogleAnalytics/accessToken",newAccessToken);
                 }     
              }      
              var newRefreshToken = mc.getProperty('uri.var.refreshToken');
