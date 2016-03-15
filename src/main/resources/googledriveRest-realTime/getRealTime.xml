@@ -37,6 +37,5 @@
                       uri-template="{uri.var.apiUrl}/drive/v2/files/{+uri.var.fileId}/realtime?{+uri.var.apiParameters}"/>
             </endpoint>
         </call>
-
     </sequence>
 </template>

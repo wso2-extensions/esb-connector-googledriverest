@@ -34,7 +34,6 @@
     <parameter name="timedTextTrackName" description=" "/>
     <parameter name="updateViewedDate" description=" "/>
     <parameter name="useContentAsIndexableText" description=" "/>
-
     <sequence>
         <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
         <property name="uri.var.uploadType" expression="$func:uploadType"/>

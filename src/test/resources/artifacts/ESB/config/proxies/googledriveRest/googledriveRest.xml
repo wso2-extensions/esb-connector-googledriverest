@@ -186,7 +186,7 @@
                 <case regex="urn:getComments">
                     <googledriveRest.getComments>
                         <fileId>{$ctx:fileId}</fileId>
-                        <commentId>{$ctx:commentId}</commentId>
+                        <commentIdCreated>{$ctx:commentIdCreated}</commentIdCreated>
                     </googledriveRest.getComments>
                 </case>
                 <case regex="urn:listParents">

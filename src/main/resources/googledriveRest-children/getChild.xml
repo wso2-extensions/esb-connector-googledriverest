@@ -27,7 +27,6 @@
         <property name="uri.var.childId" expression="$func:childId"/>
         <property name="uri.var.fields" expression="$func:fields"/>
         <property name="uri.var.apiParameters" value=""/>
-
         <filter xpath="(not($ctx:uri.var.fields= '' or (not(string($ctx:uri.var.fields)))))">
             <then>
                 <property name="uri.var.apiParameters"

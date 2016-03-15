@@ -39,7 +39,6 @@
         <property name="uri.var.timedTextTrackName" expression="$func:timedTextTrackName"/>
         <property name="uri.var.useContentAsIndexableText" expression="$func:useContentAsIndexableText"/>
         <property name="uri.var.apiParameters" value=""/>
-
         <filter xpath="(not($ctx:uri.var.ocr= '' or (not(string($ctx:uri.var.ocr)))))">
             <then>
                 <property name="uri.var.apiParameters"
@@ -94,7 +93,6 @@
                           expression="fn:concat($ctx:uri.var.apiParameters,'useContentAsIndexableText=',$ctx:uri.var.useContentAsIndexableText)"/>
             </then>
         </filter>
-
         <property name="POST_TO_URI" value="true" scope="axis2" type="STRING"></property>
         <property name="FORCE_HTTP_1.0" value="true" scope="axis2"></property>
         <property name="DISABLE_CHUNKING" value="true" scope="axis2"></property>
@@ -105,6 +103,5 @@
                       uri-template="{uri.var.apiUrl}/upload/drive/v2/files?uploadType={uri.var.uploadType}{+uri.var.apiParameters}"/>
             </endpoint>
         </call>
-
     </sequence>
 </template>

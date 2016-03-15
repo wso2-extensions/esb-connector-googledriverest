@@ -34,7 +34,6 @@
         <property name="uri.var.pinned" expression="$func:pinned"/>
         <property name="uri.var.publishAuto" expression="$func:publishAuto"/>
         <property name="uri.var.publishedOutsideDomain" expression="$func:publishedOutsideDomain"/>
-
         <payloadFactory media-type="json">
             <format>
                 {
@@ -45,7 +44,6 @@
                 <arg expression="$ctx:uri.var.published'"/>
             </args>
         </payloadFactory>
-
         <script language="js">
             <![CDATA[
                 //request body param variables
@@ -69,7 +67,6 @@
                 mc.setPayloadJSON(payload);
 			]]>
         </script>
-
         <property name="uri.var.apiParameters" value=""/>
         <filter xpath="(not($ctx:uri.var.fields = '' or (not(string($ctx:uri.var.fields)))))">
             <then>

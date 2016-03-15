@@ -28,7 +28,6 @@
     <parameter name="visibility" description="The visibility of the new file"/>
     <parameter name="fields" description="The needed fields in the response"/>
     <parameter name="bodyReq" description="request sent in body payload"/>
-
     <sequence>
         <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
         <property name="uri.var.fileId" expression="$func:fileId"/>
@@ -41,7 +40,6 @@
         <property name="uri.var.timedTextTrackName" expression="$func:timedTextTrackName"/>
         <property name="uri.var.visibility" expression="$func:visibility"/>
         <property name="uri.var.fields" expression="$func:fields"/>
-
         <payloadFactory media-type="json">
             <format>
                 $1
@@ -50,16 +48,13 @@
                 <arg expression="$ctx:uri.var.bodyReq'"/>
             </args>
         </payloadFactory>
-
         <property name="uri.var.apiParameters" value=""/>
-
         <filter xpath="(not(get-property('uri.var.convert') = '' or (not(string(get-property('uri.var.convert'))))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat(get-property('uri.var.apiParameters'),'convert=',get-property('uri.var.convert'))"/>
             </then>
         </filter>
-
         <filter xpath="(not(get-property('uri.var.ocr') = '' or (not(string(get-property('uri.var.ocr'))))))">
             <then>
                 <property name="uri.var.apiParameters"
@@ -73,50 +68,41 @@
                           expression="fn:concat(get-property('uri.var.apiParameters'),'ocrLanguage=',get-property('uri.var.ocrLanguage'))"/>
             </then>
         </filter>
-
         <filter xpath="(not(get-property('uri.var.fields') = '' or (not(string(get-property('uri.var.fields'))))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat(get-property('uri.var.apiParameters'),'fields=',get-property('uri.var.fields'))"/>
             </then>
         </filter>
-
-
         <filter xpath="(not(get-property('uri.var.pinned') = '' or (not(string(get-property('uri.var.pinned'))))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat(get-property('uri.var.apiParameters'),'pinned=',get-property('uri.var.pinned'))"/>
             </then>
         </filter>
-
         <filter xpath="(not(get-property('uri.var.timedTextLanguage') = '' or (not(string(get-property('uri.var.timedTextLanguage'))))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat(get-property('uri.var.apiParameters'),'timedTextLanguage=',get-property('uri.var.timedTextLanguage'))"/>
             </then>
         </filter>
-
         <filter xpath="(not(get-property('uri.var.timedTextTrackName') = '' or (not(string(get-property('uri.var.timedTextTrackName'))))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat(get-property('uri.var.apiParameters'),'timedTextTrackName=',get-property('uri.var.timedTextTrackName'))"/>
             </then>
         </filter>
-
         <filter xpath="(not(get-property('uri.var.visibility') = '' or (not(string(get-property('uri.var.visibility'))))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat(get-property('uri.var.apiParameters'),'visibility=',get-property('uri.var.visibility'))"/>
             </then>
         </filter>
-
-
         <call>
             <endpoint>
                 <http method="POST"
                       uri-template="{uri.var.apiUrl}/drive/v2/files/{+uri.var.fileId}/copy?{+uri.var.apiParameters}"/>
             </endpoint>
         </call>
-
     </sequence>
 </template>

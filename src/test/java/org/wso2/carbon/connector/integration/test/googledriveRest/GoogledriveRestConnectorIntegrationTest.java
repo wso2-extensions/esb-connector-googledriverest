@@ -18,17 +18,6 @@
 
 package org.wso2.carbon.connector.integration.test.googledriveRest;
 
-import java.io.IOException;
-import java.lang.String;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TimeZone;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.testng.Assert;
@@ -36,6 +25,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.connector.integration.test.base.ConnectorIntegrationTestBase;
 import org.wso2.connector.integration.test.base.RestResponse;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegrationTestBase {
 
@@ -298,8 +291,7 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
      * @throws JSONException
      * @throws IOException
      */
-    @Test(groups = {"wso2.esb"}, enabled = true, description = "googleanalytics {getChild} integration test with mandatory parameters.",
-            dependsOnMethods = {"testListChildrenWithMandatoryParameters"})
+    @Test(groups = {"wso2.esb"}, enabled = true, description = "googleanalytics {getChild} integration test with mandatory parameters.")
     public void testGetChildWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:getChild");
@@ -308,7 +300,7 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
 
         final JSONObject esbResponse = esbRestResponse.getBody();
 
-        final String apiEndpoint = apiEndpointUrl + "/files/root/children/" + connectorProperties.getProperty("childId");
+        final String apiEndpoint = apiEndpointUrl +"/files/root/children/" + connectorProperties.getProperty("childId");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
         final JSONObject apiResponse = apiRestResponse.getBody();
         Assert.assertEquals(esbResponse.getString("kind").toString(), "drive#childReference");
@@ -334,9 +326,6 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
         final JSONObject apiResponse = apiRestResponse.getBody();
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), apiRestResponse.getHttpStatusCode());
-//        Assert.assertEquals(esbRestResponse.getBody().getJSONObject("error").getJSONArray("errors").getJSONObject(0)
-//                .getString("reason"), apiRestResponse.getBody().getJSONObject("error").getJSONArray("errors")
-//                .getJSONObject(0).getString("reason"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONObject("error").getJSONArray("errors").getJSONObject(0)
                 .getString("message"), apiRestResponse.getBody().getJSONObject("error").getJSONArray("errors")
                 .getJSONObject(0).getString("message"));
@@ -445,7 +434,7 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         final String apiEndpoint = apiEndpointUrl + "/files/" + connectorProperties.getProperty("fileId") + "/comments/" + connectorProperties.getProperty("commentId");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
         final JSONObject apiResponse = apiRestResponse.getBody();
-        Assert.assertEquals(esbResponse.getString("kind").toString(), "drive#comment");
+        Assert.assertEquals(esbResponse.getString("kind").toString(), "drive#commentList");
 
     }
 

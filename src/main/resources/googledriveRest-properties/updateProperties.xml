@@ -47,7 +47,6 @@
                 var value= mc.getProperty('uri.var.value');
                 var kind = mc.getProperty('uri.var.kind');
                 var visibility= mc.getProperty('uri.var.visibility');
-
                 //Get the existing payload
                 var payload = mc.getPayloadJSON();
 
@@ -66,7 +65,6 @@
                 if (visibility != null && visibility != "") {
                    payload["visibility"] = visibility;
                 }
-
                 //Set the newly constructed payload
                 mc.setPayloadJSON(payload);
 			]]>
