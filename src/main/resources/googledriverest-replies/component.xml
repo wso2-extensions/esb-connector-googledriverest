@@ -16,7 +16,7 @@
  ~  specific language governing permissions and limitations
  ~  under the License.
 -->
-<component name="googledriveRest-replies" type="synapse/template">
+<component name="googledriverest-replies" type="synapse/template">
     <subComponents>
         <component name="listReplies">
             <file>listReplies.xml</file>

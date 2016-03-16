@@ -16,7 +16,7 @@
  ~  specific language governing permissions and limitations
  ~  under the License.
 -->
-<component name="googledriveRest-config" type="synapse/template">
+<component name="googledriverest-config" type="synapse/template">
     <subComponents>
         <component name="getAccessTokenFromRefreshToken">
             <file>getAccessTokenFromRefreshToken.xml</file>

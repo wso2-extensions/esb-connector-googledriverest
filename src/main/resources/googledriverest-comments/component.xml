@@ -16,7 +16,7 @@
  ~  specific language governing permissions and limitations
  ~  under the License.
 -->
-<component name="googledriveRest-comments" type="synapse/template">
+<component name="googledriverest-comments" type="synapse/template">
     <subComponents>
         <component name="listComments">
             <file>listComments.xml</file>

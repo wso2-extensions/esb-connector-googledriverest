@@ -16,7 +16,7 @@
  ~  specific language governing permissions and limitations
  ~  under the License.
 -->
-<component name="googledriveRest-revisions" type="synapse/template">
+<component name="googledriverest-revisions" type="synapse/template">
     <subComponents>
         <component name="listRevisions">
             <file>listRevisions.xml</file>

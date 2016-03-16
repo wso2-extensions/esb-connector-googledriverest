@@ -16,7 +16,7 @@
  ~  specific language governing permissions and limitations
  ~  under the License.
 -->
-<component name="googledriveRest-parents" type="synapse/template">
+<component name="googledriverest-parents" type="synapse/template">
     <subComponents>
         <component name="listParents">
             <file>listParents.xml</file>

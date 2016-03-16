@@ -16,7 +16,7 @@
  ~  specific language governing permissions and limitations
  ~  under the License.
 -->
-<component name="googledriveRest-about" type="synapse/template">
+<component name="googledriverest-about" type="synapse/template">
     <subComponents>
         <component name="getAbout">
             <file>getAbout.xml</file>

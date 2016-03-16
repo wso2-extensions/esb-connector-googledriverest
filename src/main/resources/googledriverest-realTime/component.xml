@@ -16,7 +16,7 @@
  ~  specific language governing permissions and limitations
  ~  under the License.
 -->
-<component name="googledriveRest-realTime" type="synapse/template">
+<component name="googledriverest-realTime" type="synapse/template">
     <subComponents>
         <component name="getRealTime">
             <file>getRealTime.xml</file>
