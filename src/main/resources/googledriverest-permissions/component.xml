@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~  WSO2 Inc. licenses this file to you under the Apache License,
+ ~  Version 2.0 (the "License"); you may not use this file except
+ ~  in compliance with the License.
+ ~  You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~  Unless required by applicable law or agreed to in writing,
+ ~  software distributed under the License is distributed on an
+ ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~  KIND, either express or implied.  See the License for the
+ ~  specific language governing permissions and limitations
+ ~  under the License.
+-->
+<component name="googledriveRest-permissions" type="synapse/template">
+    <subComponents>
+        <component name="listPermissions">
+            <file>listPermissions.xml</file>
+            <description>List all permissions for a file</description>
+        </component>
+        <component name="getPermissions">
+            <file>getPermissions.xml</file>
+            <description>Gets a permission by ID</description>
+        </component>
+        <component name="insertPermission">
+            <file>insertPermission.xml</file>
+            <description>Inserts permission for a file</description>
+        </component>
+        <component name="deletePermissions">
+            <file>deletePermissions.xml</file>
+            <description>Deletes a permission from a file</description>
+        </component>
+        <component name="getIdForEmail">
+            <file>getIdForEmail.xml</file>
+            <description>Returns the permission ID for an email address</description>
+        </component>
+        <component name="updatePermission">
+            <file>updatePermission.xml</file>
+            <description>Updates permission for a file</description>
+        </component>
+    </subComponents>
+</component>

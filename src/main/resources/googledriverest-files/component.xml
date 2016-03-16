@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~  WSO2 Inc. licenses this file to you under the Apache License,
+ ~  Version 2.0 (the "License"); you may not use this file except
+ ~  in compliance with the License.
+ ~  You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~  Unless required by applicable law or agreed to in writing,
+ ~  software distributed under the License is distributed on an
+ ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~  KIND, either express or implied.  See the License for the
+ ~  specific language governing permissions and limitations
+ ~  under the License.
+-->
+<component name="googledriveRest-files" type="synapse/template">
+    <subComponents>
+        <component name="listFile">
+            <file>listFile.xml</file>
+            <description>Lists the authenticated user's files</description>
+        </component>
+        <component name="getFile">
+            <file>getFile.xml</file>
+            <description>Gets a file's metadata by ID</description>
+        </component>
+        <component name="copyFile">
+            <file>copyFile.xml</file>
+            <description>Creates a copy of the specified file</description>
+        </component>
+        <component name="insertFile">
+            <file>insertFile.xml</file>
+            <description>Inserts a new file metadata</description>
+        </component>
+        <component name="updateInsertFile">
+            <file>updateInsertFile.xml</file>
+            <description>Updates file metadata and content</description>
+        </component>
+        <component name="uploadFile">
+            <file>uploadFile.xml</file>
+            <description>Inserts a new file</description>
+        </component>
+        <component name="deleteFile">
+            <file>deleteFile.xml</file>
+            <description>Deletes a file</description>
+        </component>
+    </subComponents>
+</component>
