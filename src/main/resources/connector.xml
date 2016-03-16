@@ -17,19 +17,19 @@
  ~  under the License.
 -->
 <connector>
-    <component name="googledriveRest" package="org.wso2.carbon.connector">
-        <dependency component="googledriveRest-config"/>
-        <dependency component="googledriveRest-about"/>
-        <dependency component="googledriveRest-changes"/>
-        <dependency component="googledriveRest-comments"/>
-        <dependency component="googledriveRest-children"/>
-        <dependency component="googledriveRest-files"/>
-        <dependency component="googledriveRest-parents"/>
-        <dependency component="googledriveRest-permissions"/>
-        <dependency component="googledriveRest-properties"/>
-        <dependency component="googledriveRest-revisions"/>
-        <dependency component="googledriveRest-realTime"/>
-        <dependency component="googledriveRest-replies"/>
+    <component name="googledriverest" package="org.wso2.carbon.connector">
+        <dependency component="googledriverest-config"/>
+        <dependency component="googledriverest-about"/>
+        <dependency component="googledriverest-changes"/>
+        <dependency component="googledriverest-comments"/>
+        <dependency component="googledriverest-children"/>
+        <dependency component="googledriverest-files"/>
+        <dependency component="googledriverest-parents"/>
+        <dependency component="googledriverest-permissions"/>
+        <dependency component="googledriverest-properties"/>
+        <dependency component="googledriverest-revisions"/>
+        <dependency component="googledriverest-realTime"/>
+        <dependency component="googledriverest-replies"/>
         <description>wso2 connector library for Google drive Rest Connector</description>
         <icon>icon/icon-small.gif</icon>
     </component>

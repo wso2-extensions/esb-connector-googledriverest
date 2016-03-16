@@ -31,10 +31,10 @@
             <property name="clientSecret" expression="json-eval($.clientSecret)"/>
             <property name="refreshToken" expression="json-eval($.refreshToken)"/>
             <property name="accessTokenRegistryPath" expression="json-eval($.accessTokenRegistryPath)"/>
-            <googledriveRest.uploadFile>
+            <googledriverest.uploadFile>
                 <apiUrl>https://www.googleapis.com</apiUrl>
                 <uploadType>media</uploadType>
-            </googledriveRest.uploadFile>
+            </googledriverest.uploadFile>
             <respond/>
         </inSequence>
         <outSequence/>

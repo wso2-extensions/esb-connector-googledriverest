@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.wso2.carbon.mediation:org.wso2.carbon.task.services:4.4.10">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/wso2/carbon/mediation/org.wso2.carbon.task.services/4.4.10/org.wso2.carbon.task.services-4.4.10.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/wso2/carbon/mediation/org.wso2.carbon.task.services/4.4.10/org.wso2.carbon.task.services-4.4.10-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/wso2/carbon/mediation/org.wso2.carbon.task.services/4.4.10/org.wso2.carbon.task.services-4.4.10-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
