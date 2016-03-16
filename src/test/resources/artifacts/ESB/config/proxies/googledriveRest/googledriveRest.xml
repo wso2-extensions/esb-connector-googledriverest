@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~  WSO2 Inc. licenses this file to you under the Apache License,
+ ~  Version 2.0 (the "License"); you may not use this file except
+ ~  in compliance with the License.
+ ~  You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~  Unless required by applicable law or agreed to in writing,
+ ~  software distributed under the License is distributed on an
+ ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~  KIND, either express or implied.  See the License for the
+ ~  specific language governing permissions and limitations
+ ~  under the License.
+-->
+<proxy name="googledriverest"
+       startOnLoad="true"
+       statistics="disable"
+       trace="disable"
+       xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <property name="apiUrl" expression="json-eval($.apiUrl)"/>
+            <property name="accessToken" expression="json-eval($.accessToken)"/>
+            <property name="clientId" expression="json-eval($.clientId)"/>
+            <property name="clientSecret" expression="json-eval($.clientSecret)"/>
+            <property name="refreshToken" expression="json-eval($.refreshToken)"/>
+            <property name="accessTokenRegistryPath" expression="json-eval($.accessTokenRegistryPath)"/>
+            <property name="changeId" expression="json-eval($.changeId)"/>
+            <property name="childId" expression="json-eval($.childId)"/>
+            <property name="parentId" expression="json-eval($.parentId)"/>
+            <property name="permissionId" expression="json-eval($.permissionId)"/>
+            <property name="folderId" expression="json-eval($.folderId)"/>
+            <property name="fileId" expression="json-eval($.fileId)"/>
+            <property name="commentId" expression="json-eval($.commentId)"/>
+            <property name="email" expression="json-eval($.email)"/>
+            <property name="role" expression="json-eval($.role)"/>
+            <property name="key" expression="json-eval($.key)"/>
+            <property name="replyId" expression="json-eval($.replyId)"/>
+            <property name="type" expression="json-eval($.type)"/>
+            <property name="propertyKey" expression="json-eval($.propertyKey)"/>
+            <property name="content" expression="json-eval($.content)"/>
+            <property name="verb" expression="json-eval($.verb)"/>
+            <property name="ocr" expression="json-eval($.ocr)"/>
+            <property name="revisionId" expression="json-eval($.revisionId)"/>
+            <property name="published" expression="json-eval($.published)"/>
+            <property name="transportAction" expression="$trp:Action"/>
+            <property name="visibility" expression="json-eval($.visibility)"/>
+            <property name="bodyReq" expression="json-eval($.bodyReq)"/>
+            <property name="idToDelete" expression="json-eval($.idToDelete)"/>
+            <property name="convert" expression="json-eval($.convert)"/>
+            <property name="ocr" expression="json-eval($.ocr)"/>
+            <property name="ocrLanguage" expression="json-eval($.ocrLanguage)"/>
+            <property name="pinned" expression="json-eval($.pinned)"/>
+            <property name="idToUpdate" expression="json-eval($.idToUpdate)"/>
+            <property name="role" expression="json-eval($.role)"/>
+            <property name="additionalRoles" expression="json-eval($.additionalRoles)"/>
+
+            <property name="transportAction" expression="$trp:Action"/>
+
+            <googledriverest.init>
+                <apiUrl>{$ctx:apiUrl}</apiUrl>
+                <clientId>{$ctx:clientId}</clientId>
+                <clientSecret>{$ctx:clientSecret}</clientSecret>
+                <refreshToken>{$ctx:refreshToken}</refreshToken>
+                <accessToken>{$ctx:accessToken}</accessToken>
+                <accessTokenRegistryPath>{$ctx:accessTokenRegistryPath}</accessTokenRegistryPath>
+            </googledriverest.init>
+            <switch source="get-property('transportAction')">
+                <case regex="urn:listFile">
+                    <googledriverest.listFile>
+                    </googledriverest.listFile>
+                </case>
+                <case regex="urn:getFile">
+                    <googledriverest.getFile>
+                        <fileId>{$ctx:fileId}</fileId>
+                    </googledriverest.getFile>
+                </case>
+                <case regex="urn:deleteFile">
+                    <googledriverest.deleteFile>
+                        <idToDelete>{$ctx:idToDelete}</idToDelete>
+                    </googledriverest.deleteFile>
+                </case>
+                <case regex="urn:insertFile">
+                    <googledriverest.insertFile>
+                        <ocr>{$ctx:ocr}</ocr>
+                        <convert>{$ctx:convert}</convert>
+                        <ocrLanguage>{$ctx:ocrLanguage}</ocrLanguage>
+                        <pinned>{$ctx:pinned}</pinned>
+                        <visibility>{$ctx:visibility}</visibility>
+                        <bodyReq>{$ctx:bodyReq}</bodyReq>
+                    </googledriverest.insertFile>
+                </case>
+                <case regex="urn:updateInsertFile">
+                    <googledriverest.updateInsertFile>
+                        <idToUpdate>{$ctx:idToUpdate}</idToUpdate>
+                        <ocr>{$ctx:ocr}</ocr>
+                        <convert>{$ctx:convert}</convert>
+                        <ocrLanguage>{$ctx:ocrLanguage}</ocrLanguage>
+                        <pinned>{$ctx:pinned}</pinned>
+                        <visibility>{$ctx:visibility}</visibility>
+                        <bodyReq>{$ctx:bodyReq}</bodyReq>
+                    </googledriverest.updateInsertFile>
+                </case>
+                <case regex="urn:uploadFile">
+                    <googledriverest.uploadFile>
+                        <ocr>{$ctx:ocr}</ocr>
+                        <convert>{$ctx:convert}</convert>
+                        <ocrLanguage>{$ctx:ocrLanguage}</ocrLanguage>
+                        <pinned>{$ctx:pinned}</pinned>
+                        <visibility>{$ctx:visibility}</visibility>
+                        <bodyReq>{$ctx:bodyReq}</bodyReq>
+                    </googledriverest.uploadFile>
+                </case>
+                <case regex="urn:copyFile">
+                    <googledriverest.copyFile>
+                        <fileId>{$ctx:fileId}</fileId>
+                    </googledriverest.copyFile>
+                </case>
+                <case regex="urn:getAbout">
+                    <googledriverest.getAbout>
+                    </googledriverest.getAbout>
+                </case>
+                <case regex="urn:listApps">
+                    <googledriverest.listApps>
+                    </googledriverest.listApps>
+                </case>
+                <case regex="urn:listChanges">
+                    <googledriverest.listChanges>
+                    </googledriverest.listChanges>
+                </case>
+                <case regex="urn:getChanges">
+                    <googledriverest.getChanges>
+                        <changeId>{$ctx:changeId}</changeId>
+                    </googledriverest.getChanges>
+                </case>
+                <case regex="urn:listChildren">
+                    <googledriverest.listChildren>
+                        <folderId>{$ctx:folderId}</folderId>
+                    </googledriverest.listChildren>
+                </case>
+                <case regex="urn:getChild">
+                    <googledriverest.getChild>
+                        <folderId>{$ctx:folderId}</folderId>
+                        <childId>{$ctx:childId}</childId>
+                    </googledriverest.getChild>
+                </case>
+                <case regex="urn:insertChild">
+                    <googledriverest.insertChild>
+                        <childId>{$ctx:childId}</childId>
+                        <folderId>{$ctx:folderId}</folderId>
+                    </googledriverest.insertChild>
+                </case>
+                <case regex="urn:deleteChild">
+                    <googledriverest.deleteChild>
+                        <childId>{$ctx:childId}</childId>
+                        <folderId>{$ctx:folderId}</folderId>
+                    </googledriverest.deleteChild>
+                </case>
+                <case regex="urn:listComments">
+                    <googledriverest.listComments>
+                        <fileId>{$ctx:fileId}</fileId>
+                    </googledriverest.listComments>
+                </case>
+                <case regex="urn:createComment">
+                    <googledriverest.createComment>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <content>{$ctx:content}</content>
+                    </googledriverest.createComment>
+                </case>
+                <case regex="urn:deleteComment">
+                    <googledriverest.deleteComment>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <commentId>{$ctx:commentId}</commentId>
+                    </googledriverest.deleteComment>
+                </case>
+                <case regex="urn:updateComment">
+                    <googledriverest.updateComment>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <commentId>{$ctx:commentId}</commentId>
+                    </googledriverest.updateComment>
+                </case>
+                <case regex="urn:getComments">
+                    <googledriverest.getComments>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <commentIdCreated>{$ctx:commentIdCreated}</commentIdCreated>
+                    </googledriverest.getComments>
+                </case>
+                <case regex="urn:listParents">
+                    <googledriverest.listParents>
+                        <folderId>{$ctx:folderId}</folderId>
+                    </googledriverest.listParents>
+                </case>
+                <case regex="urn:getParent">
+                    <googledriverest.getParent>
+                        <folderId>{$ctx:folderId}</folderId>
+                        <parentId>{$ctx:parentId}</parentId>
+                    </googledriverest.getParent>
+                </case>
+                <case regex="urn:insertParent">
+                    <googledriverest.insertParent>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <parentId>{$ctx:parentId}</parentId>
+                    </googledriverest.insertParent>
+                </case>
+                <case regex="urn:deleteParent">
+                    <googledriverest.deleteParent>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <parentId>{$ctx:parentId}</parentId>
+                    </googledriverest.deleteParent>
+                </case>
+                <case regex="urn:listPermissions">
+                    <googledriverest.listPermissions>
+                        <fileId>{$ctx:fileId}</fileId>
+                    </googledriverest.listPermissions>
+                </case>
+                <case regex="urn:getPermissions">
+                    <googledriverest.getPermissions>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <permissionId>{$ctx:permissionId}</permissionId>
+                    </googledriverest.getPermissions>
+                </case>
+                <case regex="urn:insertPermission">
+                    <googledriverest.insertPermission>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <role>{$ctx:role}</role>
+                        <type>{$ctx:type}</type>
+                    </googledriverest.insertPermission>
+                </case>
+                <case regex="urn:deletePermissions">
+                    <googledriverest.deletePermissions>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <permissionId>{$ctx:permissionId}</permissionId>
+                    </googledriverest.deletePermissions>
+                </case>
+                <case regex="urn:updatePermission">
+                    <googledriverest.updatePermission>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <permissionId>{$ctx:permissionId}</permissionId>
+                        <role>{$ctx:role}</role>
+                        <additionalRoles>{$ctx:additionalRoles}</additionalRoles>
+                    </googledriverest.updatePermission>
+                </case>
+                <case regex="urn:getIdForEmail">
+                    <googledriverest.getIdForEmail>
+                        <email>{$ctx:email}</email>
+                    </googledriverest.getIdForEmail>
+                </case>
+                <case regex="urn:listProperties">
+                    <googledriverest.listProperties>
+                        <fileId>{$ctx:fileId}</fileId>
+                    </googledriverest.listProperties>
+                </case>
+                <case regex="urn:getProperties">
+                    <googledriverest.getProperties>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <propertyKey>{$ctx:propertyKey}</propertyKey>
+                    </googledriverest.getProperties>
+                </case>
+                <case regex="urn:insertProperties">
+                    <googledriverest.insertProperties>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <key>{$ctx:key}</key>
+                    </googledriverest.insertProperties>
+                </case>
+                <case regex="urn:updateProperties">
+                    <googledriverest.updateProperties>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <propertyKey>{$ctx:propertyKey}</propertyKey>
+                    </googledriverest.updateProperties>
+                </case>
+                <case regex="urn:deleteProperties">
+                    <googledriverest.deleteProperties>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <propertyKey>{$ctx:propertyKey}</propertyKey>
+                    </googledriverest.deleteProperties>
+                </case>
+                <case regex="urn:listRevisions">
+                    <googledriverest.listRevisions>
+                        <fileId>{$ctx:fileId}</fileId>
+                    </googledriverest.listRevisions>
+                </case>
+                <case regex="urn:listReplies">
+                    <googledriverest.listReplies>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <commentId>{$ctx:commentId}</commentId>
+                    </googledriverest.listReplies>
+                </case>
+                <case regex="urn:insertReplies">
+                    <googledriverest.insertReplies>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <commentId>{$ctx:commentId}</commentId>
+                        <content>{$ctx:content}</content>
+                        <verb>{$ctx:verb}</verb>
+                    </googledriverest.insertReplies>
+                </case>
+                <case regex="urn:getReplies">
+                    <googledriverest.getReplies>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <commentId>{$ctx:commentId}</commentId>
+                        <replyId>{$ctx:replyId}</replyId>
+                    </googledriverest.getReplies>
+                </case>
+                <case regex="urn:getRealTime">
+                    <googledriverest.getRealTime>
+                        <fileId>{$ctx:fileId}</fileId>
+                    </googledriverest.getRealTime>
+                </case>
+                <case regex="urn:listRevisions">
+                    <googledriverest.listRevisions>
+                        <fileId>{$ctx:fileId}</fileId>
+                    </googledriverest.listRevisions>
+                </case>
+                <case regex="urn:getRevisions">
+                    <googledriverest.getRevisions>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <revisionId>{$ctx:revisionId}</revisionId>
+                    </googledriverest.getRevisions>
+                </case>
+                <case regex="urn:updateRevision">
+                    <googledriverest.updateRevision>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <revisionId>{$ctx:revisionId}</revisionId>
+                        <published>{$ctx:published}</published>
+                    </googledriverest.updateRevision>
+                </case>
+            </switch>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <log></log>
+            <send></send>
+        </outSequence>
+    </target>
+</proxy>
