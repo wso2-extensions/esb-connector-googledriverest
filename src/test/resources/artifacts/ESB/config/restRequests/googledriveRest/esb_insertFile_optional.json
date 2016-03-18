@@ -3,8 +3,5 @@
   "accessToken": "%s(accessToken)",
   "ocr": "false",
   "copyable": "false",
-  "bodyReq": {
-    "title": "ttt",
-    "appDataContents": true
-  }
+    "title": "ttt"
 }
