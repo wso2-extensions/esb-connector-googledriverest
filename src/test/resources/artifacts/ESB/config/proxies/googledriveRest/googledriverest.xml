@@ -49,6 +49,7 @@
             <property name="published" expression="json-eval($.published)"/>
             <property name="transportAction" expression="$trp:Action"/>
             <property name="visibility" expression="json-eval($.visibility)"/>
+            <property name="title" expression="json-eval($.title)"/>
             <property name="bodyReq" expression="json-eval($.bodyReq)"/>
             <property name="idToDelete" expression="json-eval($.idToDelete)"/>
             <property name="convert" expression="json-eval($.convert)"/>
@@ -91,7 +92,7 @@
                         <ocrLanguage>{$ctx:ocrLanguage}</ocrLanguage>
                         <pinned>{$ctx:pinned}</pinned>
                         <visibility>{$ctx:visibility}</visibility>
-                        <bodyReq>{$ctx:bodyReq}</bodyReq>
+                        <title>{$ctx:title}</title>
                     </googledriverest.insertFile>
                 </case>
                 <case regex="urn:updateInsertFile">

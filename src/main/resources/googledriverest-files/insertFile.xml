@@ -62,34 +62,62 @@
         <property name="uri.var.properties" expression="$func:properties"/>
         <property name="uri.var.parents" expression="$func:parents"/>
         <property name="uri.var.apiParameters" value=""/>
-        <payloadFactory media-type="json">
-            <format>
-                "description":"$1",
-                "id":"$2",
-                "indexableText.text":"$3",
-                "labels.restricted":"$4",
-                "labels.starred":"$5",
-                "title":"$6",
-                "labels.viewed":"$7",
-                "mimeType":"$8",
-                "lastViewedByMeDate":"$9",
-                "properties":$10,
-                "parents":$11
-            </format>
-            <args>
-                <arg expression="$ctx:uri.var.description'"/>
-                <arg expression="$ctx:uri.var.id'"/>
-                <arg expression="$ctx:uri.var.indexText'"/>
-                <arg expression="$ctx:uri.var.labelsRestricted'"/>
-                <arg expression="$ctx:uri.var.labelsStarred'"/>
-                <arg expression="$ctx:uri.var.title'"/>
-                <arg expression="$ctx:uri.var.labelsViewed'"/>
-                <arg expression="$ctx:uri.var.mimeType'"/>
-                <arg expression="$ctx:uri.var.modifiedDate'"/>
-                <arg expression="$ctx:uri.var.properties'"/>
-                <arg expression="$ctx:uri.var.parents'"/>
-            </args>
-        </payloadFactory>
+
+        <script language="js">
+            <![CDATA[
+                //request body param variables
+                var description = mc.getProperty('uri.var.description');
+                var id = mc.getProperty('uri.var.id');
+                var indexText = mc.getProperty('uri.var.indexText');
+                var labelsRestricted= mc.getProperty('uri.var.labelsRestricted');
+                var labelsStarred = mc.getProperty('uri.var.labelsStarred');
+                var title = mc.getProperty('uri.var.title');
+                var labelsViewed = mc.getProperty('uri.var.labelsViewed');
+                var mimeType = mc.getProperty('uri.var.mimeType');
+                var modifiedDate = mc.getProperty('uri.var.modifiedDate');
+                var properties = mc.getProperty('uri.var.properties');
+                var parents = mc.getProperty('uri.var.parents');
+
+                //Get the existing payload
+                var payload = mc.getPayloadJSON();
+
+                if (description != null && description != "") {
+                    payload["description"] = description;
+                }
+                if (id != null && id != "") {
+                    payload["id"] = id;
+                }
+                if (indexText != null && indexText != "") {
+                   payload["indexableText.text"] = indexText;
+                }
+                if (labelsRestricted != null && labelsRestricted != "") {
+                   payload["labels.restricted"] = labelsRestricted;
+                }
+                if (labelsStarred != null && labelsStarred != "") {
+                    payload["labels.starred"] = labelsStarred;
+                }
+                if (title != null && title != "") {
+                    payload["title"] = title;
+                }
+                if (labelsViewed != null && labelsViewed != "") {
+                    payload["labels.viewed"] = labelsViewed;
+                }
+                if (mimeType != null && mimeType != "") {
+                    payload["mimeType"] = mimeType;
+                }
+                if (modifiedDate != null && modifiedDate != "") {
+                    payload["lastViewedByMeDate"] = modifiedDate;
+                }
+                if (properties != null && properties != "") {
+                    payload["properties"] = properties;
+                }
+                if (parents != null && parents != "") {
+                    payload["parents"] = parents;
+                }
+                //Set the newly constructed payload
+                mc.setPayloadJSON(payload);
+			]]>
+        </script>
         <filter xpath="(not($ctx:uri.var.ocr = '' or (not(string($ctx:uri.var.ocr)))))">
             <then>
                 <property name="uri.var.apiParameters"
