@@ -25,7 +25,7 @@
         <property name="uri.var.fileId" expression="$func:fileId"/>
         <property name="uri.var.fields" expression="$func:fields"/>
         <property name="uri.var.apiParameters" value=""/>
-        <filter xpath="(not($ctx:uri.var.revision= '' or (not(string($ctx:uri.var.revision)))))">
+        <filter xpath="(not($ctx:uri.var.revision = '' or (not(string($ctx:uri.var.revision)))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat($ctx:uri.var.apiParameters,'revision=',$ctx:uri.var.revision)"/>

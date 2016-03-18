@@ -33,31 +33,31 @@
         <property name="uri.var.pageToken" expression="$func:pageToken"/>
         <property name="uri.var.updatedMin" expression="$func:updatedMin"/>
         <property name="uri.var.apiParameters" value=""/>
-        <filter xpath="(not($ctx:uri.var.includeDeleted= '' or (not(string($ctx:uri.var.includeDeleted)))))">
+        <filter xpath="(not($ctx:uri.var.includeDeleted = '' or (not(string($ctx:uri.var.includeDeleted)))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat($ctx:uri.var.apiParameters,'includeDeleted=',$ctx:uri.var.includeDeleted)"/>
             </then>
         </filter>
-        <filter xpath="(not($ctx:uri.var.maxResults= '' or (not(string($ctx:uri.var.maxResults)))))">
+        <filter xpath="(not($ctx:uri.var.maxResults = '' or (not(string($ctx:uri.var.maxResults)))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat($ctx:uri.var.apiParameters,'maxResults=',$ctx:uri.var.maxResults)"/>
             </then>
         </filter>
-        <filter xpath="(not($ctx:uri.var.pageToken= '' or (not(string($ctx:uri.var.pageToken)))))">
+        <filter xpath="(not($ctx:uri.var.pageToken = '' or (not(string($ctx:uri.var.pageToken)))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat($ctx:uri.var.apiParameters,'pageToken=',$ctx:uri.var.pageToken)"/>
             </then>
         </filter>
-        <filter xpath="(not($ctx:uri.var.updatedMin= '' or (not(string($ctx:uri.var.updatedMin)))))">
+        <filter xpath="(not($ctx:uri.var.updatedMin = '' or (not(string($ctx:uri.var.updatedMin)))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat($ctx:uri.var.apiParameters,'fields=',$ctx:uri.var.updatedMin)"/>
             </then>
         </filter>
-        <filter xpath="(not($ctx:uri.var.fields= '' or (not(string($ctx:uri.var.fields)))))">
+        <filter xpath="(not($ctx:uri.var.fields = '' or (not(string($ctx:uri.var.fields)))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat($ctx:uri.var.apiParameters,'fields=',$ctx:uri.var.fields)"/>

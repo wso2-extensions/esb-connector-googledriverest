@@ -81,19 +81,19 @@
                 mc.setPayloadJSON(payload);
 			]]>
         </script>
-        <filter xpath="(not($ctx:uri.var.fields= '' or (not(string($ctx:uri.var.fields)))))">
+        <filter xpath="(not($ctx:uri.var.fields = '' or (not(string($ctx:uri.var.fields)))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat($ctx:uri.var.apiParameters,'fields=',$ctx:uri.var.fields)"/>
             </then>
         </filter>
-        <filter xpath="(not($ctx:uri.var.emailMessage= '' or (not(string($ctx:uri.var.emailMessage)))))">
+        <filter xpath="(not($ctx:uri.var.emailMessage = '' or (not(string($ctx:uri.var.emailMessage)))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat($ctx:uri.var.apiParameters,'emailMessage=',$ctx:uri.var.emailMessage)"/>
             </then>
         </filter>
-        <filter xpath="(not($ctx:uri.var.sendNotificationEmails= '' or (not(string($ctx:uri.var.sendNotificationEmails)))))">
+        <filter xpath="(not($ctx:uri.var.sendNotificationEmails = '' or (not(string($ctx:uri.var.sendNotificationEmails)))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat($ctx:uri.var.apiParameters,'sendNotificationEmails=',$ctx:uri.var.sendNotificationEmails)"/>

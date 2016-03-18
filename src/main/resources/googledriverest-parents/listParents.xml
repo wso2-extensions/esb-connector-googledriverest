@@ -25,7 +25,7 @@
         <property name="uri.var.folderId" expression="$func:folderId"/>
         <property name="uri.var.fields" expression="$func:fields"/>
         <property name="uri.var.apiParameters" value=""/>
-        <filter xpath="(not($ctx:uri.var.fields= '' or (not(string($ctx:uri.var.fields)))))">
+        <filter xpath="(not($ctx:uri.var.fields = '' or (not(string($ctx:uri.var.fields)))))">
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat($ctx:uri.var.apiParameters,'fields=',$ctx:uri.var.fields)"/>
