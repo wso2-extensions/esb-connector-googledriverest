@@ -18,14 +18,14 @@
   -->
 <template name="init" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="accessToken" description="Access Token if a client account is being used"/>
-    <parameter name="apiVersion" description="The Googlespreadsheet API request version."/>
-    <parameter name="apiUrl" description="API Url to access the endpoint."/>
+    <parameter name="apiVersion" description="The Googlespreadsheet API request version"/>
+    <parameter name="apiUrl" description="API Url to access the endpoint"/>
     <parameter name="clientId"
                description="clientId of your App, given by google console when you registered your application"/>
     <parameter name="clientSecret"
                description="clientSecret of your App, given by google console when you registered your application"/>
-    <parameter name="refreshToken" description="Refresh token to exchange with an access token."/>
-    <parameter name="accessTokenRegistryPath" description="API Url to access the endpoint."/>
+    <parameter name="refreshToken" description="Refresh token to exchange with an access token"/>
+    <parameter name="accessTokenRegistryPath" description="API Url to access the endpoint"/>
     <sequence>
         <property name="uri.var.accessToken" expression="$func:accessToken"/>
         <property name="uri.var.apiUrl" expression="$func:apiUrl"/>

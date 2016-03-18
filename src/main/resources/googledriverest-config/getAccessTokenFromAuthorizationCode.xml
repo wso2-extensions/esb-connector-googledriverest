@@ -17,9 +17,9 @@
  ~  under the License.
 -->
 <template name="getAccessTokenFromAuthorizationCode" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="apiUrl" description="Base endpoint URL of GoogleAnalytics API."/>
-    <parameter name="authorizationCode" description="Authorization code to be used to obtain the access token."/>
-    <parameter name="redirectUrl" description="Authorization code to be used to obtain the access token."/>
+    <parameter name="apiUrl" description="Base endpoint URL of GoogleAnalytics API"/>
+    <parameter name="authorizationCode" description="Authorization code to be used to obtain the access token"/>
+    <parameter name="redirectUrl" description="Authorization code to be used to obtain the access token"/>
     <sequence>
         <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
         <property name="uri.var.authorizationCode" expression="$func:authorizationCode"/>
