@@ -28,11 +28,21 @@
     <parameter name="pinned" description="Whether to pin the new revision"/>
     <parameter name="removeParents" description="Comma-separated list of parent IDs to remove"/>
     <parameter name="setModifiedDate" description="Whether to set the modified date"/>
-    <parameter name="bodyReq" description="request body"/>
     <parameter name="timedTextLanguage" description="The language of the timed text"/>
     <parameter name="timedTextTrackName" description="The timed text track name"/>
     <parameter name="updateViewedDate" description="Whether to update the view date"/>
     <parameter name="useContentAsIndexableText" description="Whether to use the content as indexable text"/>
+    <parameter name="description" description="A short description of the file"/>
+    <parameter name="id" description="The ID of the file"/>
+    <parameter name="indexText" description="The text to be indexed for this file"/>
+    <parameter name="labelsRestricted" description="Whether viewers and comments are restricted"/>
+    <parameter name="labelsStarred" description="Whether this file is starred by the user"/>
+    <parameter name="title" description="The title of the file"/>
+    <parameter name="labelsViewed" description="Whether this file has been viewed by this user"/>
+    <parameter name="mimeType" description="The MIME type of the file"/>
+    <parameter name="modifiedDate" description="Last time this file was modified by anyone"/>
+    <parameter name="parents" description="Collection of parent folders which contain this file"/>
+    <parameter name="properties" description="The list of properties"/>
     <sequence>
         <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
         <property name="uri.var.uploadType" expression="$func:uploadType"/>
@@ -45,18 +55,49 @@
         <property name="uri.var.pinned" expression="$func:pinned"/>
         <property name="uri.var.removeParents" expression="$func:removeParents"/>
         <property name="uri.var.setModifiedDate" expression="$func:setModifiedDate"/>
-        <property name="uri.var.bodyReq" expression="$func:bodyReq"/>
         <property name="uri.var.timedTextLanguage" expression="$func:timedTextLanguage"/>
         <property name="uri.var.timedTextTrackName" expression="$func:timedTextTrackName"/>
         <property name="uri.var.updateViewedDate" expression="$func:updateViewedDate"/>
         <property name="uri.var.useContentAsIndexableText" expression="$func:useContentAsIndexableText"/>
+        <property name="uri.var.description" expression="$func:description"/>
+        <property name="uri.var.id" expression="$func:id"/>
+        <property name="uri.var.indexText" expression="$func:indexText"/>
+        <property name="uri.var.labelsRestricted" expression="$func:labelsRestricted"/>
+        <property name="uri.var.labelsStarred" expression="$func:labelsStarred"/>
+        <property name="uri.var.title" expression="$func:title"/>
+        <property name="uri.var.labelsViewed" expression="$func:labelsViewed"/>
+        <property name="uri.var.mimeType" expression="$func:mimeType"/>
+        <property name="uri.var.modifiedDate" expression="$func:modifiedDate"/>
+        <property name="uri.var.properties" expression="$func:properties"/>
+        <property name="uri.var.parents" expression="$func:parents"/>
         <property name="uri.var.apiParameters" value=""/>
         <payloadFactory media-type="json">
             <format>
-                $1
+                "description":"$1",
+                "id":"$2",
+                "indexableText.text":"$3",
+                "labels.restricted":"$4",
+                "labels.starred":"$5",
+                "title":"$6",
+                "labels.viewed":"$7",
+                "mimeType":"$8",
+                "lastViewedByMeDate":"$9",
+                "properties":$10,
+                "parents":$11
             </format>
             <args>
-                <arg expression="$ctx:uri.var.bodyReq'"/>
+                <arg expression="$ctx:uri.var.description'"/>
+                <arg expression="$ctx:uri.var.id'"/>
+                <arg expression="$ctx:uri.var.indexText'"/>
+                <arg expression="$ctx:uri.var.labelsRestricted'"/>
+                <arg expression="$ctx:uri.var.labelsStarred'"/>
+                <arg expression="$ctx:uri.var.title'"/>
+                <arg expression="$ctx:uri.var.labelsViewed'"/>
+                <arg expression="$ctx:uri.var.mimeType'"/>
+                <arg expression="$ctx:uri.var.modifiedDate'"/>
+                <arg expression="$ctx:uri.var.properties'"/>
+                <arg expression="$ctx:uri.var.parents'"/>
+
             </args>
         </payloadFactory>
         <filter xpath="(not($ctx:uri.var.addParents= '' or (not(string($ctx:uri.var.addParents)))))">
