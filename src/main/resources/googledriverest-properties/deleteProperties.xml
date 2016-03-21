@@ -30,7 +30,7 @@
         <filter xpath="(not($ctx:uri.var.visibility= '' or (not(string($ctx:uri.var.visibility)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'visibility=',$ctx:uri.var.visibility)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'visibility=', $ctx:uri.var.visibility)"/>
             </then>
         </filter>
         <call>

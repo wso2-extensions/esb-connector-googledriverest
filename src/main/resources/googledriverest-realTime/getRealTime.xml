@@ -28,7 +28,7 @@
         <filter xpath="(not($ctx:uri.var.revision = '' or (not(string($ctx:uri.var.revision)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'revision=',$ctx:uri.var.revision)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'revision=', $ctx:uri.var.revision)"/>
             </then>
         </filter>
         <call>

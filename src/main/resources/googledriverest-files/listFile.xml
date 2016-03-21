@@ -36,37 +36,37 @@
         <filter xpath="(not(get-property('uri.var.corpus') = '' or (not(string(get-property('uri.var.corpus'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'corpus=',get-property('uri.var.corpus'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'corpus=', get-property('uri.var.corpus'))"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.maxResults') = '' or (not(string(get-property('uri.var.maxResults'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'maxResults=',get-property('uri.var.maxResults'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'maxResults=', get-property('uri.var.maxResults'))"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.orderBy') = '' or (not(string(get-property('uri.var.orderBy'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'orderBy=',get-property('uri.var.orderBy'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'orderBy=', get-property('uri.var.orderBy'))"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.pageToken') = '' or (not(string(get-property('uri.var.pageToken'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'pageToken=',get-property('uri.var.pageToken'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'pageToken=', get-property('uri.var.pageToken'))"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.query') = '' or (not(string(get-property('uri.var.query'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'q=',get-property('uri.var.query'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'q=', get-property('uri.var.query'))"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.spaces') = '' or (not(string(get-property('uri.var.spaces'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'spaces=',get-property('uri.var.spaces'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'spaces=', get-property('uri.var.spaces'))"/>
             </then>
         </filter>
         <call>

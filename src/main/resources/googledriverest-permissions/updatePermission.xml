@@ -48,14 +48,14 @@
         <filter xpath="(not($ctx:uri.var.fields = '' or (not(string($ctx:uri.var.fields)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'fields=',$ctx:uri.var.fields)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'fields=', $ctx:uri.var.fields)"/>
             </then>
         </filter>
 
         <filter xpath="(not($ctx:uri.var.transferOwnership = '' or (not(string($ctx:uri.var.transferOwnership)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'transferOwnership=',$ctx:uri.var.transferOwnership)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'transferOwnership=', $ctx:uri.var.transferOwnership)"/>
             </then>
         </filter>
         <call>

@@ -121,55 +121,55 @@
         <filter xpath="(not($ctx:uri.var.ocr = '' or (not(string($ctx:uri.var.ocr)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'ocr=',$ctx:uri.var.ocr)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'ocr=', $ctx:uri.var.ocr)"/>
             </then>
         </filter>
         <filter xpath="(not($ctx:uri.var.convert = '' or (not(string($ctx:uri.var.convert)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'convert=',$ctx:uri.var.convert)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'convert=', $ctx:uri.var.convert)"/>
             </then>
         </filter>
         <filter xpath="(not($ctx:uri.var.ocrLanguage = '' or (not(string($ctx:uri.var.ocrLanguage)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'ocrLanguage=',$ctx:uri.var.ocrLanguage)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'ocrLanguage=', $ctx:uri.var.ocrLanguage)"/>
             </then>
         </filter>
         <filter xpath="(not($ctx:uri.var.pinned = '' or (not(string($ctx:uri.var.pinned)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'pinned=',$ctx:uri.var.pinned)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'pinned=', $ctx:uri.var.pinned)"/>
             </then>
         </filter>
         <filter xpath="(not($ctx:uri.var.timedTextLanguage = '' or (not(string($ctx:uri.var.timedTextLanguage)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'timedTextLanguage=',$ctx:uri.var.timedTextLanguage)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'timedTextLanguage=', $ctx:uri.var.timedTextLanguage)"/>
             </then>
         </filter>
         <filter xpath="(not($ctx:uri.var.visibility = '' or (not(string($ctx:uri.var.visibility)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'visibility=',$ctx:uri.var.visibility)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'visibility=', $ctx:uri.var.visibility)"/>
             </then>
         </filter>
         <filter xpath="(not($ctx:uri.var.timedTextLanguage = '' or (not(string($ctx:uri.var.timedTextLanguage)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'timedTextLanguage=',$ctx:uri.var.timedTextLanguage)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'timedTextLanguage=', $ctx:uri.var.timedTextLanguage)"/>
             </then>
         </filter>
         <filter xpath="(not($ctx:uri.var.timedTextTrackName = '' or (not(string($ctx:uri.var.timedTextTrackName)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'timedTextTrackName=',$ctx:uri.var.timedTextTrackName)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'timedTextTrackName=', $ctx:uri.var.timedTextTrackName)"/>
             </then>
         </filter>
         <filter xpath="(not($ctx:uri.var.useContentAsIndexableText = '' or (not(string($ctx:uri.var.useContentAsIndexableText)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'useContentAsIndexableText=',$ctx:uri.var.useContentAsIndexableText)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'useContentAsIndexableText=', $ctx:uri.var.useContentAsIndexableText)"/>
             </then>
         </filter>
         <call>

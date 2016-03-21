@@ -52,50 +52,50 @@
         <filter xpath="(not(get-property('uri.var.convert') = '' or (not(string(get-property('uri.var.convert'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'convert=',get-property('uri.var.convert'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'convert=', get-property('uri.var.convert'))"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.ocr') = '' or (not(string(get-property('uri.var.ocr'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'ocr=',get-property('uri.var.ocr'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'ocr=', get-property('uri.var.ocr'))"/>
             </then>
         </filter>
 
         <filter xpath="(not(get-property('uri.var.ocrLanguage') = '' or (not(string(get-property('uri.var.ocrLanguage'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'ocrLanguage=',get-property('uri.var.ocrLanguage'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'ocrLanguage=', get-property('uri.var.ocrLanguage'))"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.fields') = '' or (not(string(get-property('uri.var.fields'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'fields=',get-property('uri.var.fields'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'fields=', get-property('uri.var.fields'))"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.pinned') = '' or (not(string(get-property('uri.var.pinned'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'pinned=',get-property('uri.var.pinned'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'pinned=', get-property('uri.var.pinned'))"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.timedTextLanguage') = '' or (not(string(get-property('uri.var.timedTextLanguage'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'timedTextLanguage=',get-property('uri.var.timedTextLanguage'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'timedTextLanguage=', get-property('uri.var.timedTextLanguage'))"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.timedTextTrackName') = '' or (not(string(get-property('uri.var.timedTextTrackName'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'timedTextTrackName=',get-property('uri.var.timedTextTrackName'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'timedTextTrackName=', get-property('uri.var.timedTextTrackName'))"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.visibility') = '' or (not(string(get-property('uri.var.visibility'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'visibility=',get-property('uri.var.visibility'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'visibility=', get-property('uri.var.visibility'))"/>
             </then>
         </filter>
         <call>

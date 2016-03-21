@@ -32,13 +32,13 @@
         <filter xpath="(not($ctx:uri.var.includeDeleted = '' or (not(string($ctx:uri.var.includeDeleted)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'includeDeleted=',$ctx:uri.var.includeDeleted)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'includeDeleted=', $ctx:uri.var.includeDeleted)"/>
             </then>
         </filter>
         <filter xpath="(not($ctx:uri.var.fields = '' or (not(string($ctx:uri.var.fields)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'fields=',$ctx:uri.var.fields)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'fields=', $ctx:uri.var.fields)"/>
             </then>
         </filter>
         <call>

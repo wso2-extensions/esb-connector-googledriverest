@@ -31,13 +31,13 @@
         <filter xpath="(not(get-property('uri.var.revisionId') = '' or (not(string(get-property('uri.var.revisionId'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'revisionId=',get-property('uri.var.revisionId'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'revisionId=', get-property('uri.var.revisionId'))"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.acknowledgeAbuse') = '' or (not(string(get-property('uri.var.acknowledgeAbuse'))))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'),'acknowledgeAbuse=',get-property('uri.var.acknowledgeAbuse'))"/>
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'acknowledgeAbuse=', get-property('uri.var.acknowledgeAbuse'))"/>
             </then>
         </filter>
         <call>

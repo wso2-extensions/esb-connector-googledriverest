@@ -18,7 +18,7 @@
 -->
 <template name="getChanges" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="apiUrl" description="API Url to access the endpoint."/>
-    <parameter name="changeId" description="The id og the change of the user"/>
+    <parameter name="changeId" description="The id of the change of the user"/>
     <parameter name="fields" description="The needed fields in the response"/>
     <sequence>
         <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
@@ -28,7 +28,7 @@
         <filter xpath="(not($ctx:uri.var.field = '' or (not(string($ctx:uri.var.fields)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat($ctx:uri.var.apiParameters,'fields=',$ctx:uri.var.fields)"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'fields=', $ctx:uri.var.fields)"/>
             </then>
         </filter>
         <call>
