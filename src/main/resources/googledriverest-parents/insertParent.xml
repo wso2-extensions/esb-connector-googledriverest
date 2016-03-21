@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~  WSO2 Inc. licenses this file to you under the Apache License,
+ ~  Version 2.0 (the "License"); you may not use this file except
+ ~  in compliance with the License.
+ ~  You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~  Unless required by applicable law or agreed to in writing,
+ ~  software distributed under the License is distributed on an
+ ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~  KIND, either express or implied.  See the License for the
+ ~  specific language governing permissions and limitations
+ ~  under the License.
+-->
+<template name="insertParent" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="apiUrl" description="API Url to access the endpoint"/>
+    <parameter name="fileId" description="The ID of the folder/file."/>
+    <parameter name="parentId" description="The ID of the parent"/>
+    <parameter name="fields" description="The needed fields in the response"/>
+    <parameter name="isRoot" description="Whether the parent is root or not"/>
+    <parameter name="selfLink" description="The self link of a resource type"/>
+    <parameter name="kind" description="The kind of a resource type"/>
+    <parameter name="parentLink" description="The parent link of resource type"/>
+    <sequence>
+        <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
+        <property name="uri.var.fileId" expression="$func:fileId"/>
+        <property name="uri.var.parentId" expression="$func:parentId"/>
+        <property name="uri.var.fields" expression="$func:fields"/>
+        <property name="uri.var.isRoot" expression="$func:isRoot"/>
+        <property name="uri.var.selfLink" expression="$func:selfLink"/>
+        <property name="uri.var.kind" expression="$func:kind"/>
+        <property name="uri.var.parentLink" expression="$func:parentLink"/>
+        <payloadFactory media-type="json">
+            <format>
+                {
+                "id":"$1"
+                }
+            </format>
+            <args>
+                <arg expression="$ctx:uri.var.parentId'"/>
+            </args>
+        </payloadFactory>
+        <script language="js">
+            <![CDATA[
+                //request body param variables
+                var isRoot = mc.getProperty('uri.var.isRoot');
+                var selfLink = mc.getProperty('uri.var.selfLink');
+                var kind = mc.getProperty('uri.var.kind');
+                var parentLink= mc.getProperty('uri.var.parentLink');
+
+                //Get the existing payload
+                var payload = mc.getPayloadJSON();
+
+                if (isRoot != null && isRoot != "") {
+                    payload["isRoot"] = isRoot;
+                }
+                if (parentLink != null && parentLink != "") {
+                    payload["parentLink"] = parentLink;
+                }
+                if (selfLink != null && selfLink != "") {
+                   payload["selfLink"] = selfLink;
+                }
+                if (kind != null && kind != "") {
+                   payload["kind"] = kind;
+                }
+
+                //Set the newly constructed payload
+                mc.setPayloadJSON(payload);
+			]]>
+        </script>
+        <property name="uri.var.apiParameters" value=""/>
+        <filter xpath="(not($ctx:uri.var.fields = '' or (not(string($ctx:uri.var.fields)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'fields=', $ctx:uri.var.fields)"/>
+            </then>
+        </filter>
+        <call>
+            <endpoint>
+                <http method="Post"
+                      uri-template="{uri.var.apiUrl}/drive/v2/files/{+uri.var.fileId}/parents?{+uri.var.apiParameters}"/>
+            </endpoint>
+        </call>
+    </sequence>
+</template>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~  WSO2 Inc. licenses this file to you under the Apache License,
+ ~  Version 2.0 (the "License"); you may not use this file except
+ ~  in compliance with the License.
+ ~  You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~  Unless required by applicable law or agreed to in writing,
+ ~  software distributed under the License is distributed on an
+ ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~  KIND, either express or implied.  See the License for the
+ ~  specific language governing permissions and limitations
+ ~  under the License.
+-->
+<template name="getFile" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="apiUrl" description="API Url to access the endpoint"/>
+    <parameter name="fileId" description="The ID for the file."/>
+    <parameter name="revisionId" description="The ID for the revision"/>
+    <parameter name="acknowledgeAbuse"
+               description="Whether the user is acknowledging the risk of downloading known malware"/>
+    <sequence>
+        <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
+        <property name="uri.var.fileId" expression="$func:fileId"/>
+        <property name="uri.var.revisionId" expression="$func:revisionId"/>
+        <property name="uri.var.acknowledgeAbuse" expression="$func:acknowledgeAbuse"/>
+        <property name="uri.var.apiParameters" value=""/>
+        <filter xpath="(not(get-property('uri.var.revisionId') = '' or (not(string(get-property('uri.var.revisionId'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'revisionId=', get-property('uri.var.revisionId'))"/>
+            </then>
+        </filter>
+        <filter xpath="(not(get-property('uri.var.acknowledgeAbuse') = '' or (not(string(get-property('uri.var.acknowledgeAbuse'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'), 'acknowledgeAbuse=', get-property('uri.var.acknowledgeAbuse'))"/>
+            </then>
+        </filter>
+        <call>
+            <endpoint>
+                <http method="Get"
+                      uri-template="{uri.var.apiUrl}/drive/v2/files/{+uri.var.fileId}?{+uri.var.apiParameters}"/>
+            </endpoint>
+        </call>
+    </sequence>
+</template>
