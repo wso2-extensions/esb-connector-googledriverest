@@ -35,6 +35,7 @@
             <property name="permissionId" expression="json-eval($.permissionId)"/>
             <property name="folderId" expression="json-eval($.folderId)"/>
             <property name="fileId" expression="json-eval($.fileId)"/>
+            <property name="fields" expression="json-eval($.fields)"/>
             <property name="commentId" expression="json-eval($.commentId)"/>
             <property name="email" expression="json-eval($.email)"/>
             <property name="role" expression="json-eval($.role)"/>
@@ -59,9 +60,8 @@
             <property name="idToUpdate" expression="json-eval($.idToUpdate)"/>
             <property name="role" expression="json-eval($.role)"/>
             <property name="additionalRoles" expression="json-eval($.additionalRoles)"/>
-
+            <property name="uploadType" expression="json-eval($.uploadType)"/>
             <property name="transportAction" expression="$trp:Action"/>
-
             <googledriverest.init>
                 <apiUrl>{$ctx:apiUrl}</apiUrl>
                 <clientId>{$ctx:clientId}</clientId>
@@ -114,11 +114,13 @@
                         <pinned>{$ctx:pinned}</pinned>
                         <visibility>{$ctx:visibility}</visibility>
                         <bodyReq>{$ctx:bodyReq}</bodyReq>
+                        <uploadType>{$ctx:uploadType}</uploadType>
                     </googledriverest.uploadFile>
                 </case>
                 <case regex="urn:copyFile">
                     <googledriverest.copyFile>
                         <fileId>{$ctx:fileId}</fileId>
+                        <bodyReq>{$ctx:bodyReq}</bodyReq>
                     </googledriverest.copyFile>
                 </case>
                 <case regex="urn:getAbout">
@@ -182,6 +184,8 @@
                     <googledriverest.updateComment>
                         <fileId>{$ctx:fileId}</fileId>
                         <commentId>{$ctx:commentId}</commentId>
+                        <content>{$ctx:content}</content>
+                        <fields>{$ctx:fields}</fields>
                     </googledriverest.updateComment>
                 </case>
                 <case regex="urn:getComments">

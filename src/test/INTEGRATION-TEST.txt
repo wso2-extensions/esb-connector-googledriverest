@@ -11,16 +11,14 @@ Tested Platform:
 
 STEPS:
 
-1. Download ESB WSO2 ESB 4.9.0 from the official site.
+1. Download ESB 5.0.0-BETA from official website. Extract the ESB and put "-XX:-UseSplitVerifier" under $JVM_MEM_OPTS into {ESB_HOME}/bin/wso2server.sh.
 
 2. ESB should be configured as below.
    	 Please make sure that the below mentioned Axis configurations are enabled (\repository\conf\axis2\axis2.xml).
-                <messageBuilder contentType="multipart/form-data"
-                                class="org.wso2.carbon.relay.BinaryRelayBuilder"/>
-				<messageFormatter contentType="multipart/form-data"
-                				class="org.wso2.carbon.relay.ExpandingMessageFormatter"/>
+         <messageBuilder contentType="multipart/form-data" class="org.wso2.carbon.relay.BinaryRelayBuilder"/>
+		 <messageFormatter contentType="multipart/form-data" class="org.wso2.carbon.relay.ExpandingMessageFormatter"/>
 
-3. Compress modified ESB as wso2esb-4.9.0.zip and copy that zip file in to location "{Connector_Home}/repository/".
+3. Compress modified ESB as wso2esb-5.0.0-BETA.zip and copy that zip file in to location "{Connector_Home}/repository/".
 
 4. Creating a Google Cloud Console account:
 	- Go to https://console.developers.google.com/
@@ -30,9 +28,7 @@ STEPS:
 	- Go to APIs and auth->Credentials
 	- Under OAuth, click Create New Client ID, then Create Service Account and Create Client ID. Under the 'Service Account' section, click on 'Generate new key' and download the provided PKCS12 certificate. This will be the certificate for Service Account actions on the Google Drive connector
 
-5. Rename the .p12 file obtained as 'googledrive_certificate.p12' and place it in 'Integration_Test/products/esb/4.9.0/modules/integration/connectors/src/test/resources/artifacts/ESB/config/'
-
-6. Edit the "googledrive.properties" at /src/test/resources/artifacts/ESB/connector/config using valid and relevant data. Parameters to be changed are mentioned below.
+5. Edit the "googledrive.properties" at /src/test/resources/artifacts/ESB/connector/config using valid and relevant data. Parameters to be changed are mentioned below.
 	* If you wish to use a service account,
 		- useServiceAccount: Set to 'true' if you wish to perform actions on the connector using the service account, and to 'false' if you wish to perform actions using an accessToken (client account).
 		- serviceAccountEmail: Obtain this from the Cloud Console project, APIs & auth->Credentials->Service Account->Email address
@@ -56,5 +52,5 @@ STEPS:
     *childId
     *The fileId given should have a comment and reply you need to do this manually before running the test
 
-7. Navigate to "{Connector_Home}/" and run the following command.
+6. Navigate to "{Connector_Home}/" and run the following command.
              $ mvn clean install

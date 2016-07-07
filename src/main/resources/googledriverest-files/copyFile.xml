@@ -49,53 +49,53 @@
             </args>
         </payloadFactory>
         <property name="uri.var.apiParameters" value=""/>
-        <filter xpath="(not(get-property('uri.var.convert') = '' or (not(string(get-property('uri.var.convert'))))))">
+        <filter xpath="(not($ctx:uri.var.convert = '' or (not(string($ctx:uri.var.convert)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'), 'convert=', get-property('uri.var.convert'))"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'convert=', $ctx:uri.var.convert, '&amp;')"/>
             </then>
         </filter>
-        <filter xpath="(not(get-property('uri.var.ocr') = '' or (not(string(get-property('uri.var.ocr'))))))">
+        <filter xpath="(not($ctx:uri.var.ocr = '' or (not(string($ctx:uri.var.ocr)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'), 'ocr=', get-property('uri.var.ocr'))"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'ocr=', $ctx:uri.var.ocr, '&amp;')"/>
             </then>
         </filter>
 
-        <filter xpath="(not(get-property('uri.var.ocrLanguage') = '' or (not(string(get-property('uri.var.ocrLanguage'))))))">
+        <filter xpath="(not($ctx:uri.var.ocrLanguage = '' or (not(string($ctx:uri.var.ocrLanguage)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'), 'ocrLanguage=', get-property('uri.var.ocrLanguage'))"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'ocrLanguage=', $ctx:uri.var.ocrLanguage, '&amp;')"/>
             </then>
         </filter>
-        <filter xpath="(not(get-property('uri.var.fields') = '' or (not(string(get-property('uri.var.fields'))))))">
+        <filter xpath="(not($ctx:uri.var.fields = '' or (not(string($ctx:uri.var.fields)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'), 'fields=', get-property('uri.var.fields'))"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'fields=', $ctx:uri.var.fields, '&amp;')"/>
             </then>
         </filter>
-        <filter xpath="(not(get-property('uri.var.pinned') = '' or (not(string(get-property('uri.var.pinned'))))))">
+        <filter xpath="(not($ctx:uri.var.pinned = '' or (not(string($ctx:uri.var.pinned)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'), 'pinned=', get-property('uri.var.pinned'))"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'pinned=', $ctx:uri.var.pinned, '&amp;')"/>
             </then>
         </filter>
-        <filter xpath="(not(get-property('uri.var.timedTextLanguage') = '' or (not(string(get-property('uri.var.timedTextLanguage'))))))">
+        <filter xpath="(not($ctx:uri.var.timedTextLanguage = '' or (not(string($ctx:uri.var.timedTextLanguage)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'), 'timedTextLanguage=', get-property('uri.var.timedTextLanguage'))"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'timedTextLanguage=', $ctx:uri.var.timedTextLanguage, '&amp;')"/>
             </then>
         </filter>
-        <filter xpath="(not(get-property('uri.var.timedTextTrackName') = '' or (not(string(get-property('uri.var.timedTextTrackName'))))))">
+        <filter xpath="(not($ctx:uri.var.timedTextTrackName = '' or (not(string($ctx:uri.var.timedTextTrackName)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'), 'timedTextTrackName=', get-property('uri.var.timedTextTrackName'))"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'timedTextTrackName=', $ctx:uri.var.timedTextTrackName, '&amp;')"/>
             </then>
         </filter>
-        <filter xpath="(not(get-property('uri.var.visibility') = '' or (not(string(get-property('uri.var.visibility'))))))">
+        <filter xpath="(not($ctx:uri.var.visibility = '' or (not(string($ctx:uri.var.visibility)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                          expression="fn:concat(get-property('uri.var.apiParameters'), 'visibility=', get-property('uri.var.visibility'))"/>
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'visibility=', $ctx:uri.var.visibility, '&amp;')"/>
             </then>
         </filter>
         <call>

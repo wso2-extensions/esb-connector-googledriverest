@@ -32,25 +32,25 @@
         <filter xpath="(not($ctx:uri.var.includeSubscribed = '' or (not(string($ctx:uri.var.includeSubscribed)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                    expression="fn:concat($ctx:uri.var.apiParameters, 'includeSubscribed=', $ctx:uri.var.includeSubscribed)"/>
+                    expression="fn:concat($ctx:uri.var.apiParameters, 'includeSubscribed=', $ctx:uri.var.includeSubscribed, '&amp;')"/>
             </then>
         </filter>
         <filter xpath="(not($ctx:uri.var.maxChangeIdCount = '' or (not(string($ctx:uri.var.maxChangeIdCount)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                    expression="fn:concat($ctx:uri.var.apiParameters, 'maxChangeIdCount=', $ctx:uri.var.maxChangeIdCount)"/>
+                    expression="fn:concat($ctx:uri.var.apiParameters, 'maxChangeIdCount=', $ctx:uri.var.maxChangeIdCount, '&amp;')"/>
             </then>
         </filter>
         <filter xpath="(not($ctx:uri.var.startChangeId = '' or (not(string($ctx:uri.var.startChangeId)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                    expression="fn:concat($ctx:uri.var.apiParameters, 'startChangeId=', $ctx:uri.var.startChangeId)"/>
+                    expression="fn:concat($ctx:uri.var.apiParameters, 'startChangeId=', $ctx:uri.var.startChangeId, '&amp;')"/>
             </then>
         </filter>
         <filter xpath="(not($ctx:uri.var.fields = '' or (not(string($ctx:uri.var.fields)))))">
             <then>
                 <property name="uri.var.apiParameters"
-                    expression="fn:concat($ctx:uri.var.apiParameters, 'fields=', $ctx:uri.var.fields)"/>
+                    expression="fn:concat($ctx:uri.var.apiParameters, 'fields=', $ctx:uri.var.fields, '&amp;')"/>
             </then>
         </filter>
         <call>
