@@ -2,6 +2,6 @@
   "apiUrl": "%s(apiUrl)",
   "accessToken": "%s(accessToken)",
   "fileId": "%s(fileId)",
-  "commentIdCreated": "%s(commentIdCreated)",
+  "commentId": "%s(commentIdCreated)",
   "content": "updating"
 }
