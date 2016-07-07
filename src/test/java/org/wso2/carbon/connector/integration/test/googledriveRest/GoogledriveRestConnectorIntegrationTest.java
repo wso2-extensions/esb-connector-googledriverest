@@ -46,7 +46,7 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
     @BeforeClass(alwaysRun = true)
     public void setEnvironment() throws Exception {
 
-        init("googledriverest-connector-1.0.1-SNAPSHOT");
+        init("googledriverest-connector-1.0.1");
         esbRequestHeadersMap = new HashMap<String, String>();
         apiRequestHeadersMap = new HashMap<String, String>();
         esbRequestHeadersMap.put("Accept-Charset", "UTF-8");

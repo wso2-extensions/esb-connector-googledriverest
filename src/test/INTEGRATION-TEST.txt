@@ -6,8 +6,8 @@ Pre-requisites:
 
 Tested Platform:
 
-- Ubuntu 12.04/Ubuntu Server 13.04
-- WSO2 ESB 4.9.0
+- Ubuntu 12.04/Ubuntu Server 13.04, Mac OSx 10.10.3
+- WSO2 ESB 4.9.0,ESB 5.0.0-BETA
 
 STEPS:
 
