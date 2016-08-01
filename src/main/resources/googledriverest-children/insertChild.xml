@@ -21,9 +21,9 @@
     <parameter name="folderId" description="The ID of the folder"/>
     <parameter name="childId" description="The ID of the child"/>
     <parameter name="fields" description="The needed fields in the response"/>
-    <parameter name="childLink" description="The name of a resource type"/>
-    <parameter name="selfLink" description="The name of a resource type"/>
-    <parameter name="kind" description="The name of a resource type"/>
+    <parameter name="childLink" description="The child link to insert"/>
+    <parameter name="selfLink" description="The self link to insert"/>
+    <parameter name="kind" description="The kind of a resource type"/>
     <sequence>
         <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
         <property name="uri.var.folderId" expression="$func:folderId"/>

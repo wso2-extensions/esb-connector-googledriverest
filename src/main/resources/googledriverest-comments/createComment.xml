@@ -18,7 +18,7 @@
 -->
 <template name="createComment" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="apiUrl" description="API Url to access the endpoint"/>
-    <parameter name="fileId" description="The name of a resource type"/>
+    <parameter name="fileId" description="The id of the file type"/>
     <parameter name="content" description="The plain text content used to create this comment"/>
     <parameter name="contextType" description="The MIME type of the context snippet"/>
     <parameter name="contextValue" description="Data representation of the segment comment"/>
