@@ -20,11 +20,11 @@
     <parameter name="apiUrl" description="API Url to access the endpoint"/>
     <parameter name="fileId" description="The id of the file"/>
     <parameter name="revisionId" description="The id of the revision"/>
-    <parameter name="published" description="The name of a resource type"/>
-    <parameter name="fields" description="The name of a resource type"/>
-    <parameter name="pinned" description="The name of a resource type"/>
-    <parameter name="publishAuto" description="The name of a resource type"/>
-    <parameter name="publishedOutsideDomain" description="The name of a resource type"/>
+    <parameter name="published" description="Whether this revision is published."/>
+    <parameter name="fields" description="The other fields of a resource type"/>
+    <parameter name="pinned" description="Whether this revision is pinned to prevent automatic purging."/>
+    <parameter name="publishAuto" description="Whether subsequent revisions will be automatically republished"/>
+    <parameter name="publishedOutsideDomain" description="Whether this revision is published outside the domain. "/>
     <sequence>
         <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
         <property name="uri.var.fileId" expression="$func:fileId"/>
