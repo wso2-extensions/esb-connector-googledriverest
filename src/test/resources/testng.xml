@@ -26,7 +26,7 @@
     </listeners>
     <test name="googledriveRest-Connector-Test" preserve-order="true" verbose="2">
         <packages>
-            <package name="org.wso2.carbon.connector.integration.test.googledriveRest"/>
+            <package name="org.wso2.carbon.connector.integration.test.googledriverest"/>
         </packages>
     </test>
 </suite>

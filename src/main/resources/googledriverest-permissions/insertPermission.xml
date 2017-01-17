@@ -45,12 +45,14 @@
             <format>
                 {
                 "role":"$1",
-                "type":"$2"
+                "type":"$2",
+                "value":"$3"
                 }
             </format>
             <args>
                 <arg expression="$ctx:uri.var.role'"/>
                 <arg expression="$ctx:uri.var.type'"/>
+                <arg expression="$ctx:uri.var.value'"/>
             </args>
         </payloadFactory>
         <script language="js">
@@ -73,10 +75,6 @@
                 if (id != null && id != "") {
                    payload["id"] = id;
                 }
-                if (value != null && value != "") {
-                   payload["value"] = value;
-                }
-
                 //Set the newly constructed payload
                 mc.setPayloadJSON(payload);
 			]]>

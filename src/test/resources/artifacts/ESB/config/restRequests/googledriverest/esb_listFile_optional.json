@@ -1,0 +1,7 @@
+{
+  "apiUrl": "%s(apiUrl)",
+  "accessToken": "%s(accessToken)",
+  "corpus": "DOMAIN",
+  "maxResults": 1,
+  "fields": "kind,selfLink"
+}

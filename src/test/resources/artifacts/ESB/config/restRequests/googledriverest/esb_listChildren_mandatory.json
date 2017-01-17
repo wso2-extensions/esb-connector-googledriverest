@@ -1,0 +1,5 @@
+{
+  "apiUrl": "%s(apiUrl)",
+  "folderId": "%s(folderId)",
+  "accessToken": "%s(accessToken)"
+}
