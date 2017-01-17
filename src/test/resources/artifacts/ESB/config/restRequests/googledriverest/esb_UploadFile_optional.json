@@ -1,0 +1,11 @@
+{
+  "apiUrl": "%s(apiUrl)",
+  "accessToken": "%s(accessToken)",
+  "uploadType":"multipart",
+  "ocr": "false",
+  "copyable": "false",
+  "bodyReq": {
+    "title": "ttt",
+    "appDataContents": true
+  }
+}
