@@ -1,8 +1,0 @@
-{
-  "apiUrl": "%s(apiUrl)",
-  "accessToken": "%s(accessToken)",
-  "fileId": "%s(fileId)",
-  "permissionId": "%s(permissionId)",
-  "additionalRoles": "[commenter]",
-  "role": "owner"
-}

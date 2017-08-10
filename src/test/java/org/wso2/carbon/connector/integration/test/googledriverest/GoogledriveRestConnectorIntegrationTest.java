@@ -136,6 +136,40 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
     }
 
     /**
+     * Positive test case for exportFile method with mandatory parameters.
+     *
+     * @throws JSONException
+     * @throws IOException
+     */
+    @Test(groups = {"wso2.esb"}, enabled = true,
+            description = "googleanalytics {exportFile} integration test with mandatory parameters.",
+            dependsOnMethods = {"tesGetFileWithMandatoryParameters"})
+    public void tesExportFileWithMandatoryParameters() throws IOException, JSONException {
+
+        esbRequestHeadersMap.put("Action", "urn:exportFile");
+        RestResponse<JSONObject> esbRestResponse =
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_exportFile_mandatory.json");
+        Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
+    }
+
+    /**
+     * Negative test case for exportFile method with mandatory parameters.
+     *
+     * @throws JSONException
+     * @throws IOException
+     */
+    @Test(groups = {"wso2.esb"}, enabled = true,
+            description = "googleanalytics {exportFile} integration test with negative case.",
+            dependsOnMethods = {"tesExportFileWithMandatoryParameters"})
+    public void tesExportFileWithNegativeCase() throws IOException, JSONException {
+
+        esbRequestHeadersMap.put("Action", "urn:exportFile");
+        RestResponse<JSONObject> esbRestResponse =
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_exportFile_negative.json");
+        Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
+    }
+
+    /**
      * Positive test case for copyFile method with mandatory parameters.
      *
      * @throws JSONException

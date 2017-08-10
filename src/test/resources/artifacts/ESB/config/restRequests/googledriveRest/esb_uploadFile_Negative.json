@@ -1,6 +1,0 @@
-{
-  "apiUrl": "%s(apiUrl)",
-  "accessToken": "%s(accessToken)",
-  "ocr": "invalid",
-  "copyable": "invalid"
-}

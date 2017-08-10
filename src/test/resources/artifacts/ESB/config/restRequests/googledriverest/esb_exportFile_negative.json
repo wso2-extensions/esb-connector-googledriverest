@@ -1,6 +1,6 @@
 {
   "apiUrl": "%s(apiUrl)",
   "accessToken": "%s(accessToken)",
-  "fileId": "%s(fileId)",
-  "content": "testing comment"
+  "fileId": "%s(googleDocsFileId)",
+  "mimeType":"string"
 }

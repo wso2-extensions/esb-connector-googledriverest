@@ -1,5 +1,6 @@
 {
   "apiUrl": "%s(apiUrl)",
   "accessToken": "%s(accessToken)",
-  "changeId": "%s(changeId)"
+  "fileId": "%s(googleDocsFileId)",
+  "mimeType":"text/plain"
 }

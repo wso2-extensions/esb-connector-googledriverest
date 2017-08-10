@@ -36,6 +36,7 @@
             <property name="folderId" expression="json-eval($.folderId)"/>
             <property name="fileId" expression="json-eval($.fileId)"/>
             <property name="fields" expression="json-eval($.fields)"/>
+            <property name="alt" expression="json-eval($.alt)"/>
             <property name="commentId" expression="json-eval($.commentId)"/>
             <property name="email" expression="json-eval($.email)"/>
             <property name="role" expression="json-eval($.role)"/>
@@ -55,7 +56,9 @@
             <property name="idToDelete" expression="json-eval($.idToDelete)"/>
             <property name="convert" expression="json-eval($.convert)"/>
             <property name="ocr" expression="json-eval($.ocr)"/>
+            <property name="mimeType" expression="json-eval($.mimeType)"/>
             <property name="ocrLanguage" expression="json-eval($.ocrLanguage)"/>
+            <property name="acknowledgeAbuse" expression="json-eval($.acknowledgeAbuse)"/>
             <property name="pinned" expression="json-eval($.pinned)"/>
             <property name="idToUpdate" expression="json-eval($.idToUpdate)"/>
             <property name="role" expression="json-eval($.role)"/>
@@ -79,7 +82,16 @@
                 <case regex="urn:getFile">
                     <googledriverest.getFile>
                         <fileId>{$ctx:fileId}</fileId>
+                        <revisionId>{$ctx:revisionId}</revisionId>
+                        <acknowledgeAbuse>{$ctx:acknowledgeAbuse}</acknowledgeAbuse>
+                        <alt>{$ctx:alt}</alt>
                     </googledriverest.getFile>
+                </case>
+                <case regex="urn:exportFile">
+                    <googledriverest.exportFile>
+                        <fileId>{$ctx:fileId}</fileId>
+                        <mimeType>{$ctx:mimeType}</mimeType>
+                    </googledriverest.exportFile>
                 </case>
                 <case regex="urn:deleteFile">
                     <googledriverest.deleteFile>

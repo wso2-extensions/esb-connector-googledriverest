@@ -1,7 +1,0 @@
-{
-  "apiUrl": "%s(apiUrl)",
-  "accessToken": "%s(accessToken)",
-  "fileId": "%s(fileId)",
-  "commentId": "%s(commentId)",
-  "replyId": "%s(replyId)"
-}

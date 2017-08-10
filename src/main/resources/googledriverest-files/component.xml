@@ -46,5 +46,9 @@
             <file>deleteFile.xml</file>
             <description>Deletes a file</description>
         </component>
+        <component name="exportFile">
+            <file>exportFile.xml</file>
+            <description>Exports a Google Doc to the requested MIME type and returns the exported content.</description>
+        </component>
     </subComponents>
 </component>

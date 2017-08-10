@@ -1,8 +1,0 @@
-{
-  "apiUrl": "%s(apiUrl)",
-  "bodyReq": {
-    "title": "test",
-    "appDataContents": true
-  },
-  "accessToken": "%s(accessToken)"
-}

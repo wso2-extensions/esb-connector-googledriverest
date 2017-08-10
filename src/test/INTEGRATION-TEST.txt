@@ -48,6 +48,7 @@ STEPS:
 				- grant_type=authorization_code
 			* Use the refresh_token returned from the above request as the refreshTOken in the properties file.
 	* backupFileId: Can be used if you wish by adding the ID of a file already existing in your Drive.
+	*googleDocsFileId: use the google docs file id to download export the google docs.
     *folderId
     *childId
     *The fileId given should have a comment and reply you need to do this manually before running the test
