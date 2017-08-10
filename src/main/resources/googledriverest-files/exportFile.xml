@@ -19,7 +19,7 @@
 <template name="exportFile" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="apiUrl" description="API Url to access the endpoint"/>
     <parameter name="fileId" description="The ID for the file."/>
-    <parameter name="mimeType" description="he MIME type of the format requested for this export."/>
+    <parameter name="mimeType" description="The MIME type of the format requested for this export."/>
     <sequence>
         <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
         <property name="uri.var.fileId" expression="$func:fileId"/>
