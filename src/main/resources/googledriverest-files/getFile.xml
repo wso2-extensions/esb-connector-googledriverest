@@ -22,11 +22,14 @@
     <parameter name="revisionId" description="The ID for the revision"/>
     <parameter name="acknowledgeAbuse"
                description="Whether the user is acknowledging the risk of downloading known malware"/>
+    <parameter name="alt"
+               description="To respond with the file contents in the response body."/>
     <sequence>
         <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
         <property name="uri.var.fileId" expression="$func:fileId"/>
         <property name="uri.var.revisionId" expression="$func:revisionId"/>
         <property name="uri.var.acknowledgeAbuse" expression="$func:acknowledgeAbuse"/>
+        <property name="uri.var.alt" expression="$func:alt"/>
         <property name="uri.var.apiParameters" value=""/>
         <filter xpath="(not($ctx:uri.var.revisionId = '' or (not(string($ctx:uri.var.revisionId)))))">
             <then>
@@ -38,6 +41,19 @@
             <then>
                 <property name="uri.var.apiParameters"
                           expression="fn:concat($ctx:uri.var.apiParameters, 'acknowledgeAbuse=', $ctx:uri.var.acknowledgeAbuse, '&amp;')"/>
+            </then>
+        </filter>
+        <filter xpath="(not($ctx:uri.var.alt = '' or (not(string($ctx:uri.var.alt)))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat($ctx:uri.var.apiParameters, 'alt=', $ctx:uri.var.alt, '&amp;')"/>
+            </then>
+        </filter>
+        <filter xpath="(not($ctx:uri.var.apiParameters = '' or (not(string($ctx:uri.var.apiParameters)))))">
+            <then>
+                <property expression="fn:string-length($ctx:uri.var.apiParameters)" name="string_length"/>
+                <property expression="fn:substring($ctx:uri.var.apiParameters,0,$ctx:string_length)"
+                          name="uri.var.apiParameters"/>
             </then>
         </filter>
         <call>

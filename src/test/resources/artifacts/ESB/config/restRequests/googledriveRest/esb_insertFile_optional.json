@@ -1,7 +1,0 @@
-{
-  "apiUrl": "%s(apiUrl)",
-  "accessToken": "%s(accessToken)",
-  "ocr": "false",
-  "copyable": "false",
-    "title": "ttt"
-}

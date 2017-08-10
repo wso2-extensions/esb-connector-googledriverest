@@ -1,6 +1,0 @@
-{
-  "apiUrl": "%s(apiUrl)",
-  "accessToken": "%s(accessToken)",
-  "changeId": "%s(changeId)",
-  "fields": "file,id,kind"
-}
