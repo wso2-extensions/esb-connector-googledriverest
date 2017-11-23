@@ -7,18 +7,18 @@ Pre-requisites:
 Tested Platform:
 
 - Ubuntu 12.04/Ubuntu Server 13.04, Mac OSx 10.10.3
-- WSO2 ESB 4.9.0,ESB 5.0.0-BETA
+- WSO2 EI 6.1.1
 
 STEPS:
 
-1. Download ESB 5.0.0-BETA from official website. Extract the ESB and put "-XX:-UseSplitVerifier" under $JVM_MEM_OPTS into {ESB_HOME}/bin/wso2server.sh.
+1. Download EI 6.1.1 from official website. Extract the EI.
 
-2. ESB should be configured as below.
-   	 Please make sure that the below mentioned Axis configurations are enabled (\repository\conf\axis2\axis2.xml).
+2. EI should be configured as below.
+   	 Please make sure that the below mentioned Axis configurations are enabled (/conf/axis2/axis2.xml).
          <messageBuilder contentType="multipart/form-data" class="org.wso2.carbon.relay.BinaryRelayBuilder"/>
 		 <messageFormatter contentType="multipart/form-data" class="org.wso2.carbon.relay.ExpandingMessageFormatter"/>
 
-3. Compress modified ESB as wso2esb-5.0.0-BETA.zip and copy that zip file in to location "{Connector_Home}/repository/".
+3. Compress modified EI as wso2ei-6.1.1.zip and copy that zip file in to location "{Connector_Home}/repository/".
 
 4. Creating a Google Cloud Console account:
 	- Go to https://console.developers.google.com/

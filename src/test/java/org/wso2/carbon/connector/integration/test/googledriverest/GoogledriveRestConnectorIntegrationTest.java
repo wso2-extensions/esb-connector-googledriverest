@@ -45,8 +45,9 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
      */
     @BeforeClass(alwaysRun = true)
     public void setEnvironment() throws Exception {
-
-        init("googledriverest-connector-1.0.4-SNAPSHOT");
+        String connectorName = System.getProperty("connector_name") + "-connector-" +
+                System.getProperty("connector_version") + ".zip";
+        init(connectorName);
         esbRequestHeadersMap = new HashMap<String, String>();
         apiRequestHeadersMap = new HashMap<String, String>();
         esbRequestHeadersMap.put("Accept-Charset", "UTF-8");
@@ -66,7 +67,7 @@ public class GoogledriveRestConnectorIntegrationTest extends ConnectorIntegratio
         apiEndpointUrl = connectorProperties.getProperty("apiUrl") + "/drive/v2";
 
         String multipartPoxyName = connectorProperties.getProperty("multipartProxyName");
-        multipartProxyUrl = getProxyServiceURL(multipartPoxyName);
+        multipartProxyUrl = getProxyServiceURLHttp(multipartPoxyName);
 
     }
 
