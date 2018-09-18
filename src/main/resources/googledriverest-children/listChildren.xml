@@ -26,7 +26,7 @@
     <parameter name="q" description="Query string for searching children"/>
     <sequence>
         <property name="uri.var.apiUrl" expression="$func:apiUrl"/>
-        <property name="uri.var.folderId" value="root"/>
+        <property name="uri.var.folderId" expression="$func:folderId"/>
         <property name="uri.var.fields" expression="$func:fields"/>
         <property name="uri.var.maxResults" expression="$func:maxResults"/>
         <property name="uri.var.orderBy" value="orderBy"/>
