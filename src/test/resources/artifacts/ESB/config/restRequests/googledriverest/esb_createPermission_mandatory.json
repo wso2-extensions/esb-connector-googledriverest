@@ -4,5 +4,5 @@
   "fileId": "%s(fileId)",
   "role": "%s(role)",
   "type": "%s(type)",
-  "value": "biruntha@wso2.com"
+  "value": "%s(email)"
 }
