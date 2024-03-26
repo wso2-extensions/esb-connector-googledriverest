@@ -1,0 +1,13 @@
+{
+    "name": "Google Drive Rest ",
+    "owner": "WSO2",
+    "category": "Storage and Content Management",
+    "documentationUrl": "https://docs.wso2.com/display/ESBCONNECTORS/Google+Drive+Connector+through+REST",
+    "description": "The Google Drive connector allows you to connect to Google Drive, a file storage and synchronization service provided by Google that provides cloud storage, file sharing, and collaborative editing. The connector uses the Google Drive REST API version 2.",
+    "status": "Active",
+    "labels": [
+        "Storage",
+        "Content-Management"
+    ],
+    "releases": []
+}
